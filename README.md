@@ -8,11 +8,11 @@
 ## ساختار
 
 ```
-index.html            صفحهٔ خانه (انتخاب طرح iOS یا اندروید، دسترسی سریع به ماده‌ها) + PWA
-manifest.webmanifest  مانیفست PWA (نصب به‌صورت اپ، آیکون‌ها در icons/)
-sw.js                 سرویس‌ورکر آفلاین (کش نسخه‌های iOS و اندروید)
-ios/index.html        نسخهٔ iOS — گفت‌وگو به سبک Messages آیفون (۱۳ ماده، لینک مستقیم هر پیام #/m{id}/b{index})
-android/index.html    نسخهٔ اندروید ۱۷ — گفت‌وگو به سبک Google Messages با Material 3
+index.html            صفحهٔ خانه — فقط دو دکمه iOS Version و Android Version (بدون اسکرول)
+ios/index.html        نسخهٔ iOS — گفت‌وگو به سبک Messages آیفون (۱۳ ماده، لینک مستقیم هر پیام #/m{id}/b{index}) + PWA خودش (manifest.webmanifest و sw.js)
+android/index.html    نسخهٔ اندروید ۱۷ — گفت‌وگو به سبک Google Messages با Material 3 + PWA خودش (manifest.webmanifest و sw.js)
+sw.js                 سرویس‌ورکر قدیمی صفحهٔ اصلی — فقط کش قدیمی را پاک و خودش را حذف می‌کند
+icons/                آیکون اپ (icon-192.png و icon-512.png)
 rules.html            متن کامل قوانین در ۱۳ ماده با جستجو و فهرست تراشه‌ای
 404.html              برگهٔ «یافت نشد»
 assets/               استایل و رفتار صفحهٔ rules.html (بدون هیچ فریم‌ورک)

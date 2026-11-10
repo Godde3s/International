@@ -3,176 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>قوانین بین‌المللی — نسخه iOS و اندروید</title>
-<meta name="description" content="متن کامل ۱۳ ماده قوانین بین‌المللی (اینترنشنال) — در دو طرح iOS و اندروید ۱۷، با لینک مستقیم هر پیام و نصب به‌صورت اپ.">
-<meta name="theme-color" content="#071224">
+<title>قوانین بین‌المللی</title>
+<meta name="theme-color" content="#04070D">
 <meta property="og:title" content="قوانین بین‌المللی">
-<meta property="og:description" content="۱۳ ماده کامل — سایبری، هکینگ، فیلترینگ، ریپورت، جولان، سیک و چلنج. طرح iOS یا اندروید را انتخاب کن.">
-<meta property="og:type" content="website">
-<link rel="manifest" href="./manifest.webmanifest">
+<meta property="og:description" content="نسخه iOS یا اندروید را انتخاب کن.">
 <link rel="icon" type="image/png" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{
- --navy:#071224;--navy2:#0B1E3A;--ink:#04070D;--blue:#2E7CF6;--blue2:#0B57D0;
- --brown:#C89B6A;--white:#fff;--muted:#9FB3D1;--line:rgba(255,255,255,.1);
- --fb:'Vazirmatn',system-ui,sans-serif;--fd:'Lalezar',var(--fb);
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ink);color:var(--white);font-family:var(--fb);font-size:17px;line-height:1.7;-webkit-tap-highlight-color:transparent}
-a{color:var(--blue);text-decoration:none}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-/* nav */
-.nav{position:sticky;top:0;z-index:10;background:rgba(4,7,13,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;gap:12px;height:64px}
-.logo{width:38px;height:38px;border-radius:11px;flex:0 0 auto}
-.nav b{font-size:18px;font-weight:700}
-.nav .sp{flex:1}
-.tg{display:inline-flex;align-items:center;gap:6px;background:var(--blue2);color:#fff;font-size:14px;font-weight:500;border-radius:999px;padding:8px 16px}
-/* hero */
-.hero{position:relative;overflow:hidden;background:radial-gradient(600px 300px at 85% -10%,rgba(46,124,246,.35),transparent 60%),radial-gradient(500px 260px at 10% 110%,rgba(200,155,106,.22),transparent 60%),linear-gradient(180deg,var(--navy),var(--ink));padding:72px 0 56px;text-align:center}
-.eyebrow{display:inline-block;font-size:13px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:20px}
-.hero h1{font-family:var(--fd);font-size:clamp(52px,10vw,84px);font-weight:400;line-height:1.15;margin:0 0 12px}
-.hero h1 em{font-style:normal;color:var(--blue)}
-.lead{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto 28px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
-.chip{font-size:13px;color:#DCE7F7;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:6px 14px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-size:16px;font-weight:700;border:0;border-radius:14px;padding:14px 28px;cursor:pointer}
-.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
-.ios-hint{font-size:13px;color:var(--muted);margin-top:16px}
-/* choices */
-.choose{padding:64px 0 8px}
-.sec-t{font-family:var(--fd);font-size:34px;font-weight:400;margin:0 0 8px;text-align:center}
-.sec-s{color:var(--muted);text-align:center;margin:0 0 32px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:640px){.cards{grid-template-columns:1fr}}
-.card{border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:0;text-align:right;transition:transform .25s ease,box-shadow .25s ease}
-.card:hover{transform:translateY(-4px)}
-.card.ios{background:#fff;color:#111}
-.card.android{background:var(--navy2);color:#fff;border-top:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--brown)) 1}
-.picon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px}
-.card.ios .picon{background:#F2F2F7;color:#000}
-.card.android .picon{background:rgba(61,220,132,.14);color:#3DDC84}
-.card h2{font-size:24px;font-weight:900;margin:0 0 6px}
-.card p{margin:0 0 18px;color:inherit;opacity:.75;font-size:15px;line-height:1.8}
-.feats{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
-.feats li{display:flex;gap:8px;align-items:center}
-.feats li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex:0 0 auto}
-.card.android .feats li::before{background:var(--brown)}
-.card .btn{justify-content:center;width:100%}
-.card.ios .btn{background:var(--blue2)}
-.card.android .btn{background:var(--blue)}
-/* quick access */
-.quick{padding:56px 0 8px}
-.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#EAF1FB;border-radius:999px;padding:9px 16px;font-size:14px}
-.pill b{font-family:var(--fb);color:var(--blue)}
-.pill:hover{background:rgba(46,124,246,.18);border-color:var(--blue)}
-.old{text-align:center;margin:28px 0 0;font-size:14px}
-.old a{color:var(--muted);text-decoration:underline}
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:56px 0 8px;text-align:center}
-.stat b{display:block;font-family:var(--fd);font-size:44px;font-weight:400;color:var(--blue);line-height:1.1}
-.stat span{font-size:14px;color:var(--muted)}
-/* footer */
-footer{border-top:1px solid var(--line);margin-top:64px;padding:36px 0 48px;text-align:center;color:var(--muted);font-size:14px;line-height:2}
-footer a{color:#DCE7F7}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+html,body{height:100%}
+body{margin:0;background:#04070D;color:#fff;font-family:'Vazirmatn',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;overflow:hidden;-webkit-tap-highlight-color:transparent}
+main{width:100%;max-width:400px;padding:24px;text-align:center}
+.logo{width:72px;height:72px;border-radius:20px;margin-bottom:20px;box-shadow:0 8px 32px rgba(46,124,246,.35)}
+h1{font-size:16px;font-weight:500;color:#9FB3D1;margin:0 0 32px}
+a{display:flex;align-items:center;gap:14px;width:100%;height:76px;border-radius:22px;padding:0 24px;margin-bottom:16px;text-decoration:none;font-size:21px;font-weight:700;letter-spacing:.2px;transition:transform .15s ease,opacity .15s ease}
+a:active{transform:scale(.97)}
+a:last-child{margin-bottom:0}
+a svg{flex:0 0 auto}
+a .chev{margin-inline-start:auto;opacity:.6}
+.ios{background:#fff;color:#111}
+.android{background:#0B57D0;color:#fff}
+@media(prefers-reduced-motion:reduce){a{transition:none}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap nav-in">
- <img class="logo" src="./icons/icon-192.png" alt="قوانین بین‌المللی" width="38" height="38">
- <b>قوانین بین‌المللی</b><span class="sp"></span>
- <a class="tg" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">کانال تلگرام</a>
-</div></header>
-
-<section class="hero"><div class="wrap">
- <span class="eyebrow">سند رسمی کانال @Ghavanin_internationaL</span>
- <h1>قوانین <em>بین‌المللی</em></h1>
- <p class="lead">متن کامل ۱۳ ماده — سایبری، هکینگ، فیلترینگ، ریپورت، جولان، سیک و چلنج. طرحی را که دوست داری انتخاب کن و مثل یک گفت‌وگو بخوان.</p>
- <div class="chips">
-  <span class="chip">۱۳ ماده کامل</span><span class="chip">دو طرح iOS و اندروید</span><span class="chip">لینک مستقیم هر پیام</span><span class="chip">آفلاین با PWA</span>
- </div>
- <div class="cta-row">
-  <a class="btn" href="#choose">انتخاب طرح</a>
-  <button class="btn ghost" id="installBtn" type="button" hidden>نصب به‌صورت اپ</button>
- </div>
- <p class="ios-hint" id="iosHint" hidden>در آیفون: دکمه Share مرورگر ← Add to Home Screen</p>
-</div></section>
-
-<section class="choose" id="choose"><div class="wrap">
- <h2 class="sec-t">کدام طرح؟</h2>
- <p class="sec-s">هر دو نسخه متن یکسانی دارند — فقط حس‌شان فرق می‌کند.</p>
- <div class="cards">
-  <article class="card ios">
-   <div class="picon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></div>
-   <h2>نسخه iOS</h2>
-   <p>مثل Messages آیفون — حباب‌های خاکستری، نوبار شیشه‌ای، نقطه آبی خوانده‌نشده.</p>
-   <ul class="feats"><li>گفت‌وگوی ۱۳ ماده با آواتار رنگی هر ماده</li><li>کپی متن و لینک مستقیم هر پیام</li><li>سوایپ برگشت از لبه صفحه</li></ul>
-   <a class="btn" href="./ios/">ورود به نسخه iOS</a>
-  </article>
-  <article class="card android">
-   <div class="picon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 5.4 6.9 3.6a.6.6 0 0 1 .9-.8l1.4 1.9M15.8 5.4l1.3-1.8a.6.6 0 0 1 .9.8l-1.4 1.9"/><rect x="5" y="8" width="14" height="10" rx="5"/><circle cx="9.5" cy="12" r="1.1" fill="#0B1E3A"/><circle cx="14.5" cy="12" r="1.1" fill="#0B1E3A"/></svg></div>
-   <h2>نسخه اندروید ۱۷</h2>
-   <p>مثل Google Messages — متریال ۳ اکسپرسیو، آواتار رنگی، چیپ و دکمه شناور.</p>
-   <ul class="feats"><li>چیپ «همه / خوانده‌نشده» و جستجوی گرد</li><li>دکمه «ادامه خواندن» تا اولین خوانده‌نشده</li><li>باتم‌شیت متریال برای کپی و لینک</li></ul>
-   <a class="btn" href="./android/">ورود به نسخه اندروید</a>
-  </article>
- </div>
-</div></section>
-
-<section class="quick"><div class="wrap">
- <h2 class="sec-t">دسترسی سریع به ماده‌ها</h2>
- <p class="sec-s">روی هر ماده بزن — مستقیم در نسخه iOS باز می‌شود.</p>
- <div class="pills">
-  <a class="pill" href="./ios/#/m1"><b>۰۱</b> سایبری</a>
-  <a class="pill" href="./ios/#/m2"><b>۰۲</b> هکینگ</a>
-  <a class="pill" href="./ios/#/m3"><b>۰۳</b> فیلترینگ</a>
-  <a class="pill" href="./ios/#/m4"><b>۰۴</b> ریپورت</a>
-  <a class="pill" href="./ios/#/m5"><b>۰۵</b> نحوه جولان دادن</a>
-  <a class="pill" href="./ios/#/m6"><b>۰۶</b> شکل صحیح جولان</a>
-  <a class="pill" href="./ios/#/m7"><b>۰۷</b> قوانین عمومی جولان</a>
-  <a class="pill" href="./ios/#/m8"><b>۰۸</b> قوانین کل کات و هویت</a>
-  <a class="pill" href="./ios/#/m9"><b>۰۹</b> نکات تکمیلی</a>
-  <a class="pill" href="./ios/#/m10"><b>۱۰</b> سیک و فاقد شدن</a>
-  <a class="pill" href="./ios/#/m11"><b>۱۱</b> اسکرول کل</a>
-  <a class="pill" href="./ios/#/m12"><b>۱۲</b> قفل کردن قفلی</a>
-  <a class="pill" href="./ios/#/m13"><b>۱۳</b> چلنج</a>
- </div>
- <p class="old"><a href="./rules.html">متن کامل قوانین (صفحه متنی قدیمی)</a></p>
-</div></section>
-
-<section class="stats"><div class="wrap" style="display:contents">
- <div class="stat"><b>۱۳</b><span>ماده کامل</span></div>
- <div class="stat"><b>۲</b><span>طرح iOS و اندروید</span></div>
- <div class="stat"><b>PWA</b><span>نصب و خواندن آفلاین</span></div>
-</div></section>
-
-<footer><div class="wrap">
- با ذکر نام یاد اَهـورامـزدا شروع می‌کنیم.<br>
- رضا بازدار (Reza Joker) • علی معصومی (ALi HaCk) • <a href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">@Ghavanin_internationaL</a>
-</div></footer>
-
-<script>
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
-let deferredPrompt=null;
-const installBtn=document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false});
-installBtn.addEventListener('click',async()=>{
- if(!deferredPrompt)return;
- deferredPrompt.prompt();
- await deferredPrompt.userChoice;
- deferredPrompt=null;installBtn.hidden=true;
-});
-if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!window.navigator.standalone){
- document.getElementById('iosHint').hidden=false;
-}
-</script>
+<main>
+ <img class="logo" src="./icons/icon-192.png" alt="" width="72" height="72">
+ <h1>قوانین بین‌المللی</h1>
+ <a class="ios" href="./ios/">
+  <svg width="26" height="26" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+  iOS Version
+  <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+ </a>
+ <a class="android" href="./android/">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.2 5.4 6.9 3.6a.6.6 0 0 1 .9-.8l1.4 1.9M15.8 5.4l1.3-1.8a.6.6 0 0 1 .9.8l-1.4 1.9"/><rect x="5" y="8" width="14" height="10" rx="5"/><circle cx="9.5" cy="12" r="1.1" fill="#0B57D0"/><circle cx="14.5" cy="12" r="1.1" fill="#0B57D0"/></svg>
+  Android Version
+  <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+ </a>
+</main>
 </body>
 </html>

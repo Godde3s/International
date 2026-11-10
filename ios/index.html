@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>قوانین بین‌المللی</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,6 +133,7 @@ button{font-family:var(--fb);touch-action:manipulation}
    <div class="rmid"><span class="rtitle">علی معصومی (ALi HaCk)</span><span class="rprev">09308934704</span></div>
   </a>
   <p style="text-align:center;color:var(--label3);font-size:12px;line-height:1.8;padding:28px 24px 40px">با ذکر نام یاد اَهـورامـزدا شروع می‌کنیم.<br>هویت نویسندگان بایگانی شده و سیک آن‌ها هرگز حساب نمی‌شود.<br><a href="../" style="color:var(--tint)">صفحه اصلی</a></p>
+  <div style="text-align:center;padding:0 24px 44px"><button id="installBtn" hidden style="background:var(--tint);color:#fff;border:0;border-radius:12px;padding:12px 26px;font:inherit;font-size:15px;font-weight:600;cursor:pointer">نصب اپ</button><span id="iosHint" hidden style="font-size:13px;color:var(--label2)">در آیفون: دکمه Share ← Add to Home Screen</span></div>
  </div>
 
  <div id="detail" style="display:none">
@@ -347,7 +351,12 @@ function route(){
  else{current=null;document.getElementById('detail').style.display='none';document.getElementById('listView').style.display='block';renderList()}
 }
 window.addEventListener('hashchange',route);
-if('serviceWorker' in navigator){navigator.serviceWorker.register('../sw.js').catch(()=>{})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+let deferredPrompt=null;const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;if(installBtn)installBtn.hidden=false});
+if(installBtn)installBtn.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true});
+if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!window.navigator.standalone){const h=document.getElementById('iosHint');if(h)h.hidden=false}
+
 renderList();
 route();
 </script>
