@@ -1,154 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>قوانین بین‌المللی</title>
-<meta name="description" content="سند قوانین بین‌المللی (اینترنشنال)، کل‌های سایبری، هکینگ، فیلترینگ و ریپورت؛ متن کامل بدون تغییر از کانال رسمی.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>قوانین بین‌المللی — نسخه iOS و اندروید</title>
+<meta name="description" content="متن کامل ۱۳ ماده قوانین بین‌المللی (اینترنشنال) — در دو طرح iOS و اندروید ۱۷، با لینک مستقیم هر پیام و نصب به‌صورت اپ.">
+<meta name="theme-color" content="#071224">
 <meta property="og:title" content="قوانین بین‌المللی">
-<meta property="og:description" content="سند قوانین بین‌المللی (اینترنشنال)؛ متن کامل، جستجو و لینک مستقیم هر ماده.">
+<meta property="og:description" content="۱۳ ماده کامل — سایبری، هکینگ، فیلترینگ، ریپورت، جولان، سیک و چلنج. طرح iOS یا اندروید را انتخاب کن.">
 <meta property="og:type" content="website">
-<meta name="theme-color" id="meta-theme" content="#000000">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23ff9500'/%3E%3Ctext x='60' y='87' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='66' fill='%23000000'%3E%D9%82%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<script>
-/* تم ذخیره‌شده پیش از رنگ‌آمیزی اعمال می‌شود تا صفحه پرش نکند */
-document.documentElement.classList.add('js');try{if(localStorage.getItem('intl-theme')==='light')document.documentElement.dataset.theme='light';}catch(e){}
-</script>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy:#071224;--navy2:#0B1E3A;--ink:#04070D;--blue:#2E7CF6;--blue2:#0B57D0;
+ --brown:#C89B6A;--white:#fff;--muted:#9FB3D1;--line:rgba(255,255,255,.1);
+ --fb:'Vazirmatn',system-ui,sans-serif;--fd:'Lalezar',var(--fb);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--fb);font-size:17px;line-height:1.7;-webkit-tap-highlight-color:transparent}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(4,7,13,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:12px;height:64px}
+.logo{width:38px;height:38px;border-radius:11px;flex:0 0 auto}
+.nav b{font-size:18px;font-weight:700}
+.nav .sp{flex:1}
+.tg{display:inline-flex;align-items:center;gap:6px;background:var(--blue2);color:#fff;font-size:14px;font-weight:500;border-radius:999px;padding:8px 16px}
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(600px 300px at 85% -10%,rgba(46,124,246,.35),transparent 60%),radial-gradient(500px 260px at 10% 110%,rgba(200,155,106,.22),transparent 60%),linear-gradient(180deg,var(--navy),var(--ink));padding:72px 0 56px;text-align:center}
+.eyebrow{display:inline-block;font-size:13px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:20px}
+.hero h1{font-family:var(--fd);font-size:clamp(52px,10vw,84px);font-weight:400;line-height:1.15;margin:0 0 12px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.lead{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto 28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.chip{font-size:13px;color:#DCE7F7;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:6px 14px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-size:16px;font-weight:700;border:0;border-radius:14px;padding:14px 28px;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
+.ios-hint{font-size:13px;color:var(--muted);margin-top:16px}
+/* choices */
+.choose{padding:64px 0 8px}
+.sec-t{font-family:var(--fd);font-size:34px;font-weight:400;margin:0 0 8px;text-align:center}
+.sec-s{color:var(--muted);text-align:center;margin:0 0 32px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.card{border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:0;text-align:right;transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px)}
+.card.ios{background:#fff;color:#111}
+.card.android{background:var(--navy2);color:#fff;border-top:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--brown)) 1}
+.picon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px}
+.card.ios .picon{background:#F2F2F7;color:#000}
+.card.android .picon{background:rgba(61,220,132,.14);color:#3DDC84}
+.card h2{font-size:24px;font-weight:900;margin:0 0 6px}
+.card p{margin:0 0 18px;color:inherit;opacity:.75;font-size:15px;line-height:1.8}
+.feats{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.feats li{display:flex;gap:8px;align-items:center}
+.feats li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex:0 0 auto}
+.card.android .feats li::before{background:var(--brown)}
+.card .btn{justify-content:center;width:100%}
+.card.ios .btn{background:var(--blue2)}
+.card.android .btn{background:var(--blue)}
+/* quick access */
+.quick{padding:56px 0 8px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#EAF1FB;border-radius:999px;padding:9px 16px;font-size:14px}
+.pill b{font-family:var(--fb);color:var(--blue)}
+.pill:hover{background:rgba(46,124,246,.18);border-color:var(--blue)}
+.old{text-align:center;margin:28px 0 0;font-size:14px}
+.old a{color:var(--muted);text-decoration:underline}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:56px 0 8px;text-align:center}
+.stat b{display:block;font-family:var(--fd);font-size:44px;font-weight:400;color:var(--blue);line-height:1.1}
+.stat span{font-size:14px;color:var(--muted)}
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:64px;padding:36px 0 48px;text-align:center;color:var(--muted);font-size:14px;line-height:2}
+footer a{color:#DCE7F7}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">پرش به محتوا</a>
+<header class="nav"><div class="wrap nav-in">
+ <img class="logo" src="./icons/icon-192.png" alt="قوانین بین‌المللی" width="38" height="38">
+ <b>قوانین بین‌المللی</b><span class="sp"></span>
+ <a class="tg" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">کانال تلگرام</a>
+</div></header>
 
-<!-- نوار بالا -->
-<header class="navbar">
-  <div class="nav-row">
-    <a class="nav-title is-link" href="index.html">قوانین بین‌المللی</a>
-    <span class="nav-spacer"></span>
-    <a class="icon-btn" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener" aria-label="کانال تلگرام">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 2.9 11.4c-1 .4-1 1.3-.2 1.6l4.7 1.5 1.8 5.5c.2.6.4.8.9.8.5 0 .7-.2 1-.5l2.4-2.3 4.8 3.6c.9.5 1.5.2 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.6-1.5zM8.4 14.1l9.6-6.1c.5-.3.9-.1.6.3l-8.2 7.4-.3 3.6-1.7-5.2z"/></svg>
-    </a>
-    <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="تغییر تم تیره و روشن">
-      <svg class="sun-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19"/></svg>
-      <svg class="moon-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.6 8.6 0 1 1 9.8 3.6a7 7 0 1 0 10.6 10.6z"/></svg>
-    </button>
-  </div>
-</header>
+<section class="hero"><div class="wrap">
+ <span class="eyebrow">سند رسمی کانال @Ghavanin_internationaL</span>
+ <h1>قوانین <em>بین‌المللی</em></h1>
+ <p class="lead">متن کامل ۱۳ ماده — سایبری، هکینگ، فیلترینگ، ریپورت، جولان، سیک و چلنج. طرحی را که دوست داری انتخاب کن و مثل یک گفت‌وگو بخوان.</p>
+ <div class="chips">
+  <span class="chip">۱۳ ماده کامل</span><span class="chip">دو طرح iOS و اندروید</span><span class="chip">لینک مستقیم هر پیام</span><span class="chip">آفلاین با PWA</span>
+ </div>
+ <div class="cta-row">
+  <a class="btn" href="#choose">انتخاب طرح</a>
+  <button class="btn ghost" id="installBtn" type="button" hidden>نصب به‌صورت اپ</button>
+ </div>
+ <p class="ios-hint" id="iosHint" hidden>در آیفون: دکمه Share مرورگر ← Add to Home Screen</p>
+</div></section>
 
-<main id="main">
+<section class="choose" id="choose"><div class="wrap">
+ <h2 class="sec-t">کدام طرح؟</h2>
+ <p class="sec-s">هر دو نسخه متن یکسانی دارند — فقط حس‌شان فرق می‌کند.</p>
+ <div class="cards">
+  <article class="card ios">
+   <div class="picon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></div>
+   <h2>نسخه iOS</h2>
+   <p>مثل Messages آیفون — حباب‌های خاکستری، نوبار شیشه‌ای، نقطه آبی خوانده‌نشده.</p>
+   <ul class="feats"><li>گفت‌وگوی ۱۳ ماده با آواتار رنگی هر ماده</li><li>کپی متن و لینک مستقیم هر پیام</li><li>سوایپ برگشت از لبه صفحه</li></ul>
+   <a class="btn" href="./ios/">ورود به نسخه iOS</a>
+  </article>
+  <article class="card android">
+   <div class="picon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 5.4 6.9 3.6a.6.6 0 0 1 .9-.8l1.4 1.9M15.8 5.4l1.3-1.8a.6.6 0 0 1 .9.8l-1.4 1.9"/><rect x="5" y="8" width="14" height="10" rx="5"/><circle cx="9.5" cy="12" r="1.1" fill="#0B1E3A"/><circle cx="14.5" cy="12" r="1.1" fill="#0B1E3A"/></svg></div>
+   <h2>نسخه اندروید ۱۷</h2>
+   <p>مثل Google Messages — متریال ۳ اکسپرسیو، آواتار رنگی، چیپ و دکمه شناور.</p>
+   <ul class="feats"><li>چیپ «همه / خوانده‌نشده» و جستجوی گرد</li><li>دکمه «ادامه خواندن» تا اولین خوانده‌نشده</li><li>باتم‌شیت متریال برای کپی و لینک</li></ul>
+   <a class="btn" href="./android/">ورود به نسخه اندروید</a>
+  </article>
+ </div>
+</div></section>
 
-  <!-- سرلوحه: عنوان بزرگ iOS -->
-  <section class="page-head wrap">
-    <p class="caption">با ذکر نام یاد اَهـورامـزدا شروع میکنیم</p>
-    <h1 class="large-title">قوانین بین‌المللی</h1>
-    <p class="lede">متن کامل و بدون تغییر از سند رسمی کانال، همراه با جستجو و لینک مستقیم هر ماده.</p>
-    <div class="btn-row">
-      <a class="btn btn-filled" href="rules.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.75" y="3.2" width="14.5" height="17.6" rx="2.4"/><path d="M8.6 8.4h6.8M8.6 12h6.8M8.6 15.6h4.2"/></svg>
-        متن کامل قوانین
-      </a>
-    </div>
-  </section>
+<section class="quick"><div class="wrap">
+ <h2 class="sec-t">دسترسی سریع به ماده‌ها</h2>
+ <p class="sec-s">روی هر ماده بزن — مستقیم در نسخه iOS باز می‌شود.</p>
+ <div class="pills">
+  <a class="pill" href="./ios/#/m1"><b>۰۱</b> سایبری</a>
+  <a class="pill" href="./ios/#/m2"><b>۰۲</b> هکینگ</a>
+  <a class="pill" href="./ios/#/m3"><b>۰۳</b> فیلترینگ</a>
+  <a class="pill" href="./ios/#/m4"><b>۰۴</b> ریپورت</a>
+  <a class="pill" href="./ios/#/m5"><b>۰۵</b> نحوه جولان دادن</a>
+  <a class="pill" href="./ios/#/m6"><b>۰۶</b> شکل صحیح جولان</a>
+  <a class="pill" href="./ios/#/m7"><b>۰۷</b> قوانین عمومی جولان</a>
+  <a class="pill" href="./ios/#/m8"><b>۰۸</b> قوانین کل کات و هویت</a>
+  <a class="pill" href="./ios/#/m9"><b>۰۹</b> نکات تکمیلی</a>
+  <a class="pill" href="./ios/#/m10"><b>۱۰</b> سیک و فاقد شدن</a>
+  <a class="pill" href="./ios/#/m11"><b>۱۱</b> اسکرول کل</a>
+  <a class="pill" href="./ios/#/m12"><b>۱۲</b> قفل کردن قفلی</a>
+  <a class="pill" href="./ios/#/m13"><b>۱۳</b> چلنج</a>
+ </div>
+ <p class="old"><a href="./rules.html">متن کامل قوانین (صفحه متنی قدیمی)</a></p>
+</div></section>
 
-  <!-- انواع کل -->
-  <section class="group wrap reveal" aria-labelledby="h-anva">
-    <h2 class="group-title" id="h-anva">انواع کل مورد تایید ما</h2>
-    <div class="card">
-      <a class="row" href="rules.html#sec-01">
-        <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 7.2 5.1 12l3.5 4.8"/><path d="M15.4 7.2 18.9 12l-3.5 4.8"/></svg></span>
-        <span class="row-main">
-          <span class="row-title">1 – Cyberi</span>
-        </span>
-        <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.4 6.4 8.8 12l5.6 5.6"/></svg>
-      </a>
-      <a class="row" href="rules.html#sec-02">
-        <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.6"/><path d="M7 9.6l3.2 3.2L7 16"/><path d="M12.6 16.2H17"/></svg></span>
-        <span class="row-main">
-          <span class="row-title">2 – HaCkinG</span>
-        </span>
-        <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.4 6.4 8.8 12l5.6 5.6"/></svg>
-      </a>
-      <a class="row" href="rules.html#sec-03">
-        <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 7h14M7.8 12h8.4M10.6 17h2.8"/></svg></span>
-        <span class="row-main">
-          <span class="row-title">3 – FiLterinG</span>
-        </span>
-        <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.4 6.4 8.8 12l5.6 5.6"/></svg>
-      </a>
-      <a class="row" href="rules.html#sec-04">
-        <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.8h11.6l-2.6 4.1 2.6 4.1H6"/></svg></span>
-        <span class="row-main">
-          <span class="row-title">4 – ReportinG</span>
-        </span>
-        <svg class="row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.4 6.4 8.8 12l5.6 5.6"/></svg>
-      </a>
-    </div>
-  </section>
+<section class="stats"><div class="wrap" style="display:contents">
+ <div class="stat"><b>۱۳</b><span>ماده کامل</span></div>
+ <div class="stat"><b>۲</b><span>طرح iOS و اندروید</span></div>
+ <div class="stat"><b>PWA</b><span>نصب و خواندن آفلاین</span></div>
+</div></section>
 
-  <!-- دربارهٔ سند -->
-  <section class="group wrap reveal" aria-labelledby="h-doc">
-    <h2 class="group-title" id="h-doc">دربارهٔ سند</h2>
-    <div class="card card-pad">
-      <p class="card-note"><strong>نویسنده‌های ابر قوانین سایبری و ریپورت و فیلترینگ و هکینگ، تلگرام یعنی قوانین اینترنشنال یا بین‌المللی</strong></p>
-      <p class="card-note"><span class="note-tag">!! نکته !!</span> هویت رضا جوکر و علی هک بایگانیه و سیكشون نمیخوره هیچ جوره پس قوانین هیچوقت فیک نمیشه مگر اینکه خود نویسنده ها بخان فیکش کنن.</p>
-    </div>
-  </section>
+<footer><div class="wrap">
+ با ذکر نام یاد اَهـورامـزدا شروع می‌کنیم.<br>
+ رضا بازدار (Reza Joker) • علی معصومی (ALi HaCk) • <a href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">@Ghavanin_internationaL</a>
+</div></footer>
 
-  <!-- اعضای تیم -->
-  <section class="group wrap reveal" aria-labelledby="h-team">
-    <h2 class="group-title" id="h-team">اعضای تیم</h2>
-    <div class="card">
-      <a class="row" href="tel:09928123943">
-        <span class="avatar" aria-hidden="true">ر</span>
-        <span class="row-main">
-          <span class="row-title">رضا بازدار</span>
-          <span class="row-sub">سازنده · Reza Joker · @muanster</span>
-        </span>
-        <span class="row-value">09928123943</span>
-      </a>
-      <a class="row" href="tel:09308934704">
-        <span class="avatar" aria-hidden="true">ع</span>
-        <span class="row-main">
-          <span class="row-title">علی معصومی</span>
-          <span class="row-sub">سازنده · ALi HaCk · @hoshzakhmi</span>
-        </span>
-        <span class="row-value">09308934704</span>
-      </a>
-      <div class="row">
-        <span class="avatar" aria-hidden="true">ن</span>
-        <span class="row-main">
-          <span class="row-title">اسامی چنل</span>
-          <span class="row-sub">ادمین</span>
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- پانویس -->
-  <footer class="colophon wrap">
-    <p>متن سند بدون تغییر است؛ مرجع رسمی، <a href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">کانال تلگرام</a>.</p>
-  </footer>
-</main>
-
-<!-- نوار تب پایین (موبایل) -->
-<nav class="tabbar" aria-label="ناوبری اصلی">
-  <div class="wrap tabbar-row">
-    <a class="tab-item" href="index.html" aria-current="page">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.4 12 4.6l7.5 6.8"/><path d="M6.4 9.9v9.4h11.2V9.9"/><path d="M10.2 19.3v-4.7h3.6v4.7"/></svg>
-      <span class="tab-label">خانه</span>
-    </a>
-    <a class="tab-item" href="rules.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.75" y="3.2" width="14.5" height="17.6" rx="2.4"/><path d="M8.6 8.4h6.8M8.6 12h6.8M8.6 15.6h4.2"/></svg>
-      <span class="tab-label">قوانین</span>
-    </a>
-    <a class="tab-item" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 2.9 11.4c-1 .4-1 1.3-.2 1.6l4.7 1.5 1.8 5.5c.2.6.4.8.9.8.5 0 .7-.2 1-.5l2.4-2.3 4.8 3.6c.9.5 1.5.2 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.6-1.5zM8.4 14.1l9.6-6.1c.5-.3.9-.1.6.3l-8.2 7.4-.3 3.6-1.7-5.2z"/></svg>
-      <span class="tab-label">تلگرام</span>
-    </a>
-  </div>
-</nav>
-
-<script src="assets/js/app.js" defer></script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+let deferredPrompt=null;
+const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false});
+installBtn.addEventListener('click',async()=>{
+ if(!deferredPrompt)return;
+ deferredPrompt.prompt();
+ await deferredPrompt.userChoice;
+ deferredPrompt=null;installBtn.hidden=true;
+});
+if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!window.navigator.standalone){
+ document.getElementById('iosHint').hidden=false;
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>قوانین بین‌المللی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#fff;--bg2:#F2F2F7;--bubble:#E9E9EB;--label:#000;--label2:#8E8E93;--label3:#AEAEB2;
+ --sep:rgba(60,60,67,.18);--tint:#007AFF;--glass:rgba(255,255,255,.72);--sheet:rgba(255,255,255,.94);
+ --gbtn:rgba(120,120,128,.18);--danger:#FF3B30;
+ --fb:'Vazirmatn',system-ui,-apple-system,'Segoe UI',sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
+}
+@media(prefers-color-scheme:dark){
+ :root{--bg:#000;--bg2:#1C1C1E;--bubble:#26262A;--label:#fff;--label2:#98989D;--label3:#636366;
+ --sep:rgba(255,255,255,.16);--glass:rgba(0,0,0,.6);--sheet:rgba(28,28,30,.96);--gbtn:rgba(255,255,255,.16)}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--label);font-family:var(--fb);font-size:17px;line-height:1.55;-webkit-tap-highlight-color:transparent}
+.mono{font-family:var(--fm)}
+a{color:var(--tint)}
+button{font-family:var(--fb);touch-action:manipulation}
+:focus-visible{outline:2px solid var(--tint);outline-offset:2px;border-radius:8px}
+.app{max-width:480px;margin:0 auto;min-height:100vh}
+/* ===== Messages list ===== */
+.lhead{padding:8px 16px 0}
+.lhead h1{font-size:34px;font-weight:700;line-height:1.2;margin:14px 0 12px;letter-spacing:-.5px;text-wrap:balance}
+.search{display:flex;align-items:center;gap:6px;background:var(--bg2);border-radius:10px;padding:8px 10px;margin-bottom:6px}
+.search svg{flex:0 0 auto;color:var(--label2)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;color:var(--label);outline:none}
+.search input::placeholder{color:var(--label2)}
+.row{display:flex;gap:12px;align-items:center;padding:12px 16px 0;text-decoration:none;color:inherit;min-height:76px}
+.row:active{background:var(--bg2)}
+@media(hover:hover){.row:hover,.crow:hover{background:var(--bg2)}}
+.row:last-child .rmid,.row:last-child .rend{border-bottom-color:transparent}
+.crow:last-of-type .rmid{border-bottom-color:transparent}
+.rav{width:52px;height:52px;border-radius:50%;background:var(--bubble);color:var(--label2);display:grid;place-items:center;font-family:var(--fm);font-size:15px;flex:0 0 auto;align-self:flex-start;margin-top:2px}
+.rmid{flex:1;min-width:0;border-bottom:1px solid var(--sep);padding-bottom:13px}
+.rtitle{display:block;font-size:17px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row.unread .rtitle{font-weight:700}
+.rprev{font-size:15px;line-height:1.45;color:var(--label2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:break-word}
+.row.unread .rprev{color:var(--label);font-weight:600}
+.rend{flex:0 0 auto;align-self:flex-start;display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:4px;border-bottom:1px solid var(--sep);padding-bottom:13px}
+.rtime{font-family:var(--fm);font-size:13px;color:var(--label2);white-space:nowrap}
+.rdot{width:10px;height:10px;border-radius:50%;background:var(--tint)}
+.sec{font-size:13px;color:var(--label2);padding:22px 16px 4px}
+.crow{display:flex;gap:12px;align-items:center;padding:10px 16px 0;text-decoration:none;color:inherit;min-height:64px}
+.crow:active{background:var(--bg2)}
+.crow .rav{width:44px;height:44px;font-size:14px}
+.crow .rmid{padding-bottom:11px}
+.crow .rprev{font-family:var(--fm);font-size:14px;direction:ltr;text-align:right}
+.empty{text-align:center;color:var(--label2);font-size:16px;padding:48px 24px}
+/* ===== conversation ===== */
+.dnav{position:sticky;top:0;z-index:20;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:12px 12px 10px;background:var(--glass);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--sep)}
+.gbtn{position:relative;width:36px;height:36px;border-radius:50%;background:var(--gbtn);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--tint);display:grid;place-items:center;border:0;cursor:pointer;flex:0 0 auto;padding:0}
+.gbtn::after{content:'';position:absolute;inset:-4px}
+.gbtn:active{opacity:.6}
+.dcenter{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px}
+.dav{width:48px;height:48px;border-radius:50%;background:var(--bubble);color:var(--label2);display:grid;place-items:center;font-family:var(--fm);font-size:15px}
+.dpill{display:inline-flex;align-items:center;gap:4px;background:var(--bubble);border-radius:999px;padding:5px 14px;font-size:15px;font-weight:600;color:var(--label);text-decoration:none;max-width:100%}
+.dpill span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sys{text-align:center;color:var(--label2);font-size:13px;line-height:1.7;margin:18px 16px 12px}
+.chat{padding:0 12px calc(40px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:2px}
+.who{font-size:13px;color:var(--acc, var(--label2));margin:12px 0 4px;margin-inline-start:34px}
+.msg{display:flex;gap:6px;align-items:flex-end;margin-inline-start:34px}
+.msg.first{margin-inline-start:0}
+.mav{width:28px;height:28px;border-radius:50%;background:var(--bubble);color:var(--label2);display:grid;place-items:center;font-size:10px;font-family:var(--fm);flex:0 0 auto}
+.bubble{background:var(--bubble);color:var(--label);border-radius:18px;border-end-start-radius:5px;padding:10px 14px;max-width:82%;font-size:17px;line-height:1.65;overflow-wrap:break-word;cursor:default;transition:transform .15s ease,opacity .15s ease}
+.bubble p{margin:0}
+.bubble:not(.darkb) b{color:var(--acc)}
+.bubble svg{vertical-align:-3px;flex:0 0 auto}
+.bubble ul{padding-right:16px;margin:0}
+.bubble .warn{display:flex;gap:6px;align-items:flex-start;color:var(--danger)}
+.bubble .mono{background:rgba(120,120,128,.16);border-radius:6px;padding:1px 6px;font-size:14px;direction:ltr;display:inline-block}
+.bubble.darkb{background:#111827;color:#F9FAFB}
+.bubble.darkb .mono{background:rgba(255,255,255,.16)}
+.bubble.endb{text-align:center;font-size:22px;font-weight:600}
+.bubble.press{transform:scale(.97);opacity:.85}
+.bubble{transition:transform .15s ease,opacity .15s ease,box-shadow .5s ease}
+.bubble.flash{box-shadow:0 0 0 2px var(--acc, var(--tint))}
+.bwrap{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+.linkbtn{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:0;background:transparent;color:var(--label3);display:grid;place-items:center;cursor:pointer;opacity:.55;padding:0;position:relative}
+.linkbtn::after{content:'';position:absolute;inset:-8px}
+.linkbtn:hover,.linkbtn:focus-visible{opacity:1;color:var(--tint)}
+.linkbtn.done{color:var(--tint);opacity:1}
+.seen{font-size:13px;color:var(--label2);margin:8px 0 0;margin-inline-start:34px;text-align:start}
+/* ===== iOS context menu ===== */
+#sheetBg{position:fixed;inset:0;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:40}
+#sheet{position:fixed;left:50%;transform:translate(-50%,10px);bottom:calc(20px + env(safe-area-inset-bottom));width:min(420px,calc(100vw - 32px));z-index:41;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+#sheet.open,#sheetBg.open{opacity:1;pointer-events:auto}
+#sheet.open{transform:translate(-50%,0)}
+.scard{background:var(--sheet);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:14px;overflow:hidden;overscroll-behavior:contain}
+.scard + .scard{margin-top:8px}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;padding:12px;border:0;background:transparent;color:var(--tint);font-size:17px;cursor:pointer}
+.sbtn:active{background:rgba(120,120,128,.14)}
+.sbtn + .sbtn{border-top:1px solid var(--sep)}
+.sbtn.cancel{font-weight:600}
+@media(prefers-reduced-motion:reduce){.bubble,#sheet,#sheetBg{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+ <div id="listView">
+  <header class="lhead">
+   <h1>قوانین بین‌المللی</h1>
+   <label class="search">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="جستجو…" aria-label="جستجو در قوانین" autocomplete="off" spellcheck="false">
+   </label>
+  </header>
+  <main id="rows" aria-label="فهرست ماده‌ها"></main>
+  <div class="sec">کانال و نویسندگان</div>
+  <a class="crow" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">
+   <div class="rav">ق</div>
+   <div class="rmid"><span class="rtitle">کانال قوانین بین‌المللی</span><span class="rprev">@Ghavanin_internationaL</span></div>
+  </a>
+  <a class="crow" href="tel:09928123943">
+   <div class="rav">ر</div>
+   <div class="rmid"><span class="rtitle">رضا بازدار (Reza Joker)</span><span class="rprev">09928123943</span></div>
+  </a>
+  <a class="crow" href="tel:09308934704">
+   <div class="rav">ع</div>
+   <div class="rmid"><span class="rtitle">علی معصومی (ALi HaCk)</span><span class="rprev">09308934704</span></div>
+  </a>
+  <p style="text-align:center;color:var(--label3);font-size:12px;line-height:1.8;padding:28px 24px 40px">با ذکر نام یاد اَهـورامـزدا شروع می‌کنیم.<br>هویت نویسندگان بایگانی شده و سیک آن‌ها هرگز حساب نمی‌شود.<br><a href="../" style="color:var(--tint)">صفحه اصلی</a></p>
+ </div>
+
+ <div id="detail" style="display:none">
+  <nav class="dnav" aria-label="گفت‌وگو">
+   <button class="gbtn" id="backBtn" aria-label="بازگشت به فهرست">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+   </button>
+   <div class="dcenter">
+    <div class="dav" id="dAv">۰۱</div>
+    <a class="dpill" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener"><span id="dPill">سایبری</span><span aria-hidden="true">‹</span></a>
+   </div>
+   <a class="gbtn" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener" aria-label="کانال تلگرام">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 3.3 2.9 10.6c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.7-2.6 5.6 4.1c1 .6 1.8.3 2.1-.9l3.8-17.4c.3-1.5-.5-2.1-1.6-2zM8.7 13.7l10.4-6.6c.5-.3 1-.1.6.2l-8.9 8-.3 3.4-1.8-5z"/></svg>
+   </a>
+  </nav>
+  <div class="sys" id="sysLine">امروز</div>
+  <div class="chat" id="dContent"></div>
+ </div>
+</div>
+
+<div id="sheetBg"></div>
+<div id="sheet" role="menu" aria-label="گزینه‌های پیام">
+ <div class="scard"><button class="sbtn" id="copyBtn" type="button" role="menuitem">کپی</button><button class="sbtn" id="copyLinkBtn" type="button" role="menuitem">کپی لینک</button></div>
+ <div class="scard"><button class="sbtn cancel" id="cancelBtn" type="button" role="menuitem">لغو</button></div>
+</div>
+
+<script>
+const RULES=[
+{id:1,no:'۰۱',title:'سایبری — Cyberi',sub:'کدنویسی روی فیلم • کیبورد اصلی گوشی',body:`<p>توضیح کل سایبری که دارای دو بخش مهم و مختلف هستش: <b>کدنویسی (Coding)</b></p><p>این کل هر دو کلر یا چلنجر باید رو فیلم سورس رو کدنویسی کنن و هرگونه کپی‌پیست باعث سیک می‌شه.</p><p><b>نکته:</b> اگه سورس رو خود کیبورد ادیت کنه مشکلی نداره؛ مثلا ما اشتباه بنویسیم <span class="mono">Sistem</span> و اون ادیت کنه <span class="mono">System</span>، ایرادی نداره.</p><p><b>موارد مورد نیاز:</b> داور معتبر در کنار چکر + فیلم ریکورد از کدنویسی کردن سورس + کیبورد اصلی گوشی (کیبوردهای ادیت‌شده باخته) + توی محیط‌های IDE هم استفاده از قابلیت‌هاشون مشکلی نیست.</p><p><b>آزاد (Free):</b> این کل به‌صورت آزاد هستش و از اسمش که معلومه کپی‌پیست آزاده، ولی فقط کپی آزاده و چیز دیگه‌ای با کل کدنویسی فرقی نداره. هر کلر فیلم باید داشته باشه و اگر نداشته باشه سیکش خورده.</p><p><b>نکته:</b> در کل کدنویسی و آزاد می‌تونید در ریکوردتون سورس رو هایلایت کنید، جوری که سورس نوشته‌اش معلوم نباشه ولی معلوم باشه که کپی نزدید.</p>`},
+{id:2,no:'۰۲',title:'هکینگ — Hacking',sub:'تست نفوذ، هک، امنیت و فیشینگ',body:`<p>هرگونه کل که ربطی به حوزه‌های تست نفوذ از شاخه‌های مختلف، هرگونه کل که عملیات هک یا نفوذ یا امنیت و فیشینگ رو بهش می‌گیم کل هکینگ.</p><p class="warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><b>نکته:</b> در صورت استفاده اشتباه از اسم کل‌ها، هر اتفاقی بیفته به گردن همون کلریه که این اشتباه رو انجام داده.</span></p>`},
+{id:3,no:'۰۳',title:'فیلترینگ — Filtering',sub:'فقط پلتفرم‌های داخلی • حداکثر ۲ هفته',body:`<p>کل فیلترینگ هیچ ربطی به کل ریپورت نداره و در صورت استفاده اشتباه از این کار، سیک کلر مرتکب می‌خوره و ولی فقط با یه هویتش.</p><p>کل فیلترینگ، انواع کل زدن اکانت، گروه و چنل قفلی در Iranian Platforms یا اپلیکیشن‌های داخلی است گفته می‌شود (مثل روبیکا، شاد، ایتا، سروش).</p><p><b>وضعیت کل خودکار:</b> کل خودکار در هر کلی معتبره، ولی کل خودکار نیاز به این داره کلر دو در تونل باشه و آزاد نمی‌تونی کل خودکار استارت کنی. اگه کلر دوم خودکار استارت کنه و تو تونلش نباشی فاقده، و بعدش اگه تو همین کارو کنی معتبره تا عدالت ضایع نشه.</p><p><b>کل فیلترینگ با تایم آزاد فاقده. ۲ هفته بیشترین تایم کله.</b></p>`},
+{id:4,no:'۰۴',title:'ریپورت — Reporting',sub:'فقط اپ‌های خارجی',body:`<p>کل ریپورت هیچ ربطی به پلتفرم‌های داخلی نداره.</p><p>فقط شامل: اپلیکیشن‌های <b>تلگرام</b> و <b>اینستاگرام</b> و اپ‌های خارجی.</p>`},
+{id:5,no:'۰۵',title:'نحوه جولان دادن',sub:'شکل کل + توضیح پروژه + تایم + قوانین + سر چی باشه',body:`<p><b>نحوه نوع دادن:</b> شکل کل + توضیح پروژه + تایم + قوانین + سر چی باشه.</p><p>اینکه از چه ابزار و زبانی هم استفاده کنیم می‌تونه تو نوع بیاد؛ الزامی نیست.</p><p>اگه نوع یا جولانی قوانین نداشته باشه (نوشته شده باشه اون نوع طبق قوانین ما انجام می‌شود، چه کلر بخاد چه نخاد).</p><p class="warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg><span><b>نکته مهم:</b> در صورتی عدم رضایت کلر اول سیکش می‌خوره و اینکه کل سر چی باشه فقط ۳ خط می‌تونه باشه؛ اگه بیشتر بشه نوع یا جولان فاقده اهمیته.</span></p>`},
+{id:6,no:'۰۶',title:'شکل صحیح جولان',sub:'ترتیب درست پیام جولان',body:`<ol class="flow"><li><span class="n">1</span><b>Team One</b><span>تیم اول</span></li><li><span class="n">2</span><b>Team Two</b><span>تیم دوم</span></li><li><span class="n">3</span><b>TotaL</b><span>توتال</span></li><li><span class="n">4</span><b>Tips</b><span>تیپس</span></li><li><span class="n">5</span><b>Link ToneL</b><span>لینک تونل</span></li><li><span class="n">6</span><b>Link @Ghavanin_internationaL</b><span>لینک کانال قوانین</span></li></ol><p>جابه‌جا باشن اشکالی نداره.</p><p>بعد از پایان کل و تموم کردن کدنویسی یا هرچیز دیگه‌ای که کلیده بودید اعلام کنین <b>«نکل و کل تمومه»</b>.</p><p>جولان بعد از خاست کلر یک فاقده.</p>`},
+{id:7,no:'۰۷',title:'قوانین عمومی جولان',sub:'بدون درخواست معتبر کلر ↔ داور',body:`<ul><li>در قوانین بین‌المللی هیچ‌گونه درخواست معتبری از سوی کلر به داور یا داور به کلر یا کلر به کلر نداریم.</li><li>در قوانین فرق نمی‌کنه اسم تونلتون چی باشه، هرچی باشه قبوله؛ ولی کینگ خبری مهمه، باید یه‌چیز در مورد کینگ یا خبری یا توتال باشه.</li><li>هرچیز ادیت‌خورده‌ای در توتال نیوز فاقد محسوب می‌شه.</li><li>حداقل ممبرای تونل و کینگ مهم نیست، فقط هیچ‌کدوم نباید در هنگام کل سکرت باشن و با اعتراض کلرا باز باید بشه؛ اگه اعتراض نکنن سکرت باز نشه ایرادی نداره.</li></ul>`},
+{id:8,no:'۰۸',title:'قوانین کل کات و هویت',sub:'هویت گرفتن اجباری و حتمی است',body:`<p>در صورت نوشته شدن در نکات، کسانی که کل کات یا بایگانین هویت می‌گیرن و این زوری و اجباریه و حتمیه.</p><p>اگه مدرکی برای کل کاتی نداشتید، باید بکلید و وقتی هویت بگیرید و بکلید اگه سیکتون بخوره با تموم هویت‌هاتون خورده.</p>`},
+{id:9,no:'۰۹',title:'نکات تکمیلی و جزئیات حیاتی',sub:'داور، تایم، سین، شات و لف',body:`<ul><li>انتخاب نوع به انتخاب کلر جولان‌خورده هستش نه کلر ۱، و این قوانین سروشی اینجا فاقده اهمیته.</li><li>انتخاب داور با کلر یک هستش و ربطی به کلر دوم نداره و کلر دو می‌تونه یه چکر بیاره، ولی در صورت توهین به اعضای تونل کاملا عزله.</li><li>بعد از اینکه تایم داور برای انجام هرکار به کلر دوم تموم شد، کلر اول می‌تونه درخواست عزل و یا ریم کلر دوم رو بگیره.</li><li>هر جولان تا ۱ هفته معتبره، اما بعد اینکه حق بنر گرفتین دیگه جولان تمومه و اگه جولان بخورید حسابه.</li><li>بعد از ریپلای رو نوع یا جولان هیچ بهونه‌ای نمی‌مونه (مثلا هویت فیکه یا فلان چیز فاقده یا نوع فاقده) و همه‌چیز باید قبل کل مشخص بشه.</li><li>نوع رو نوع سیکه / جولان رو نوع سیکه / نوع رو جولان سیک نیست.</li><li>اگه کلر تو تایم توافقی مشخص نیاد بالا سیکش می‌خوره و نمی‌تونه بکله.</li><li>سین مخفی معتبره.</li><li>بلاک کردن بعد از فوروارد جولان معتبره و هیچ‌وقت باعث باخت نیست.</li><li>کلر باید جوین شه مدارک خودشو به داور بده؛ در غیر این صورت اگه جوین نشه و پیوی کلر یک چیزی بگه معتبر نیست.</li><li>استفاده از سورس‌های چت جی‌پی‌تی در صورت تایید شدنش باعث سیکه.</li><li>اگه کسی اشتباه بکله و اطلاعات آخرش اشتباه باشه سیکش کاملا می‌خوره.</li><li>بعد اتمام کل می‌گید نکل و بعد فیلم کات می‌کنید و شاتو می‌دید؛ البته این بخش خیلی مهم نی ترتیبش، ولی اول باید بگی نکل.</li><li>هرگونه نوع با بدون قوانین از این تایم سیکه در تموم کل‌ها از جمله سایبری، هکینگ، ریپورت و فیلترینگ.</li><li>در صورت شلوغ بودن تونل با تایید کلر اول، داور یه تونل می‌زنه و کل اونجا انجام می‌شه.</li><li>تغییر داور فقط زمانی معتبره که داور به کلر دو توهین کنه یا کلر اول عزلش کنه.</li><li>توهین کلر دو به داور باعث باخت / توهین داور به کلر دو باعث عزل شدن می‌شود / توهین کلرها بهم هیچ‌گونه اعتباری نداره.</li><li>اگه شما در تلگرام نوع فیلترینگ روبیکا بدید نیاز نیست تو روبیکا قفل کنید؛ هویت کلتون رو فقط در تلگرام مهمه.</li><li>برای اینکه اثبات کنید کلر چیزی نیستید ۱۵ بنر باید از اون کل بیارید؛ بهونه اینکه کلر این پلتفرم نیستم فاقده اهمیته.</li><li>لرز تو جولان باخت نیست.</li><li>الزامی نیست جولان تو تونل پین باشه و وقتی کلر دوم اومد با درخواست داور می‌تونه بفوره تو تونل کلر یک!</li><li>کلر یک نیازی برای اجازه شات و فور گرفتن نداره، ولی کلر دو نیاز داره و در صورت ۳ اخطار سیکش می‌خوره.</li><li>سیک باخت هیچ فرقی نداره.</li><li>کل کات بای کل فرقی نداره.</li><li>کسی که یه هویتش بایگانیه در صورت تایید شدن این قضیه، سیک اون هویت‌هاش نمی‌خوره به هیچ وجه.</li><li>این قوانین در پلتفرم سروش اعتبار نداره ولی تو روبیکا داره؛ ولی نکات این قوانین اصل کلریه و حتی اگه با این قوانین جولان نداده باشید بازم این نکات استفاده می‌شه.</li><li>اگه سین بزنی و طبق تایم مشخص نیای و کلر اول هرجای حق بنر تو بگیره دیگه حق کلیدن نداری، مخصوصا اگه دیر کنی.</li><li>اگه کلرش نیستی باید ثابت کنی و بعدش باید بالاخاتو بیاری یا ببینی کلر اول آیا نوع میده طبق حوزه خودت.</li><li>حق لف باید از داور بگیری؛ اگه نداد یا طرفگیری یا توهین کرد، از طرف قوانین حق لف دادن از تونل رو دارید.</li><li>اگه بالاخاهاتو بیاری بجات بکلن، اگه سیکش خورد هم اون با تموم هویت‌هاش می‌خوره هم تو، ولی اگه باخت کلر اول خورد فقط هویت کلش می‌خوره.</li><li>در کل فیلترینگ، ریپورت قفلی‌ها / اکانت‌ها / روبینوها ربطی نداره که مالکش کی باشه، مگه اینکه تو نوع گفته باشه از خودمون باشه.</li><li>در کل فیلترینگ درخواست‌ها باید تو نوع باشه مثلا !!</li><li>کل فیلترینگ زدن اکانت روبیکای هم که تو پیوی هم یه فحش بدیم، قوانین بین‌المللی سر سیک از کل مجازی (فحشی که داده می‌شه باید برا جفت کلرا یه‌چیز باشه نه اینکه فرق کنه).</li><li>کل ابزاری و ساخت فاقده !!</li><li>کل عملی فاقده !!</li></ul>`},
+{id:10,no:'۱۰',title:'سیک شدن و فاقد شدن',sub:'جولان رو جولان = سیک • سین و پنجره شناور',body:`<ul><li>جولان رو جولان باخته؛ اگه شما جولان بدید بعد حق بنر یا قبل حق بنر، طرف جولان رو جولان کنه سیکش خورده.</li><li>کلر دوم اگه بیاد تونل جولان رو جولان کنه، حتی اگه جولان واسه خودش نباشه، سیک خودش و اونکه جولان داده می‌خوره.</li><li><b>مثال:</b> من جولان دادم مهراب خدایان و سین زده اومده تونل و جولان یکی از بالاخاهاش که امیر خدایانه رو فور برنه، به اعضای تونل هم سیک مهراب می‌خوره هم سیک امیر خدایان، به علت جولان رو جولان.</li><li>جولان رو جولان سیکه (هرکی زودتر فور کنه، تایم ثبت مهم نیست).</li><li>جولان با هویت فیک در صورتی که با ق ما باشه سیک نیست و می‌تونی هویتتو به انتخاب داور عوض کنی.</li><li>سین عدم جوین و سین مخفی در هر صورت سیک حساب می‌شن.</li><li>کل خودکار در هر کلی معتبره ولی کل خودکار نیاز به این داره کلر دو در تونل باشه و آزاد نمی‌تونی کل خودکار استارت کنی.</li><li>اگه کلر دوم خودکار استارت کنه و تو تونلش نباشی فاقده و بعدش اگه تو همین کارو کنی معتبره تا عدالت ضایع نشه.</li><li>هر کسی که سابقه ۲ تا جولان با قوانین بین‌المللی رو داره می‌تونه داوری کنه و چکری هم همین‌طور؛ در غیر این صورت حق چکری و داوری رو نداره.</li><li>جولان سایب به کلر فیل و همین‌طور برعکس با گرفتن مدرک فاقد می‌شه و کلر می‌تونه طبق حوزه اون نوع بده.</li><li>کلکاتی که مدرکی برای کلر نبودن خودش نداره حرفش فاقده و شاهد نیاز نیست؛ کل کات داخل چنل‌های چکری نامعتبر و تاییدنشده از قوانین ما فاقده.</li><li>ادیت جولان بعد فور زدن جولان فاقده (تناقض بین متن پیوی و تونل).</li><li>استفاده از پنجره شناور کاملا باخته و سیکه و همین‌طور از قبل پیست کردن سورس در برنامه و فقط ران کردنش هم فاقده.</li></ul>`},
+{id:11,no:'۱۱',title:'اسکرول کل (استارت)',sub:'شمارش ۱ تا ۰ و بعد «بکلید»',body:`<p>کل در پیوی و تونل به یه صورت استارت می‌شه. از قبل استارت شدن جفت کلر میرن رو فیلم تا زمان:</p><p style="text-align:center;font-family:var(--fm);font-size:19px">1 2 3 4 5 6 7 8 9 0<br><span style="font-family:var(--fb)">بکلید</span></p><p>تا کلمه بکلید باید تو تونل رو ریکورد باشید و بعد اون میرید تا کل رو انجام بدید.</p>`},
+{id:12,no:'۱۲',title:'قفل کردن قفلی برا کل',sub:'پسوند معتبر فقط KhaLeq است',body:`<p>اگه تو تل جولان بدید فقط اینجا قفلی رو قفل کنید، بقیه اپ‌ها مهم نی. پسوند اصلی قوانین <b>KhaLeq</b> هستش.</p><p>خالق با <span class="mono">gh</span> خریداری شده و دیگه قابل استفاده نیست، پس <b>KhaLeq تنها پسوند اعتبار دار در تلگرام</b> هست خواهد بود.</p><p><b>نکته مهم:</b> ما می‌تونیم تو جولان بزنیم هویت رو تو تونل انتخاب می‌کنم؛ در اون صورت اگه هویت کلمون تو تونل بگیم و قفلی نداشته باشیم می‌تونیم عوض کنیم، در غیر این صورت اگه هویت کل تو جولان نوشته باشیم از قبل و قفلی نداشته باشیم سیکمون می‌خوره.</p><p><b>قفل کردن هویت:</b> فقط ۱ قفلی اصلی قفل باشه کافیه. برای مثال برای هویت علی هک فقط فقط <span class="mono">@KhaLeq_ALi_HaCk</span> معتبره.</p><div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg><span class="mono">@KhaLeq_ALi_HaCk</span><span>— معتبر</span></div><div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span class="mono">@KhaLeq_ALy_HaCk</span><span>— نامعتبر</span></div><div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span class="mono">@KhaLeq_ALi_Hak</span><span>— نامعتبر</span></div>`},
+{id:13,no:'۱۳',title:'چلنج — Challenge',sub:'رو کم کنی — بدون هویت، بدون تونل، بدون سیک',black:true,body:`<p>این بخش، بخش جذاب قوانین برای رو کم کنی! نه نیاز به هویت معتبر داری، نه نیاز به تونل و کینگ داری، نه نیاز به نوع خاصی داری و سر چیز خاصی نیست، مخصوصا سیک.</p><p>کسایی که کل کاتن یا کلری نمی‌کنن می‌تونن بتل برن یا همون حالا چلنج به چه صورته؟</p><p><b>مثال:</b> علی هکم کریتور هک یا چلنج ساده می‌دم به رضا جوکر سر رو کم کنی.</p><p>(در این قسمت می‌نویسیم که پروژه چلنج چیه، برای مثال) بتل کدنویسی یه ابزار برای DDOS زدن و اف کردن وبسایت‌های داخلی!! و بعد لینک تونل.</p><p>در چلنج نیازی به هویت و هیچیز جز یه داور ندارید و سیک کسی نمی‌خوره، پس چلنجر دوم نمی‌تونه بگه که من کلر نیستم و نمیام و فرار کنه به به منظور واقعیت.</p><p class="end">تَـمـآم . . .</p>`}
+];
+const ACCENTS=['#0B57D0','#00897B','#7C4DFF','#E8710A','#C62828','#2E7D32','#6A1B9A','#0277BD','#AD1457','#558B2F','#1565C0','#EF6C00','#4527A0'];
+
+const FA='۰۱۲۳۴۵۶۷۸۹';
+const fa=n=>String(n).replace(/\d/g,d=>FA[d]);
+const stripTags=h=>{const t=document.createElement('div');t.innerHTML=h;return t.textContent.trim()};
+let read={};
+function loadRead(){try{if(window.hatchWidget&&window.hatchWidget.getState){const s=window.hatchWidget.getState({read:{}});read=(s&&s.read)||{}}}catch(e){read={}}}
+function save(){try{if(window.hatchWidget&&window.hatchWidget.setState){window.hatchWidget.setState({read:read})}}catch(e){}}
+window.addEventListener('hatch-widget-state',e=>{if(e.detail&&e.detail.state&&e.detail.state.read){read=e.detail.state.read;renderList();}});
+loadRead();
+let current=null;
+function isDone(id){return (read[id]||0)>=100}
+function readMins(r){const words=r.body.replace(/<[^>]+>/g,' ').trim().split(/\s+/).length;return Math.max(1,Math.round(words/180))}
+function renderList(){
+ const q=(document.getElementById('q').value||'').trim();
+ const list=RULES.filter(r=>!q||stripTags(r.title+' '+r.sub+' '+r.body).includes(q));
+ const el=document.getElementById('rows');
+ if(!list.length){el.innerHTML='<div class="empty">نتیجه‌ای پیدا نشد</div>';return}
+ el.innerHTML=list.map(r=>{
+  const unread=!isDone(r.id);
+  return `<a class="row${unread?' unread':''}" href="#/m${r.id}">
+   <div class="rav" style="background:${ACCENTS[r.id-1]};color:#fff">${r.no}</div>
+   <div class="rmid"><span class="rtitle">${r.title}</span><span class="rprev">${r.sub}</span></div>
+   <div class="rend"><span class="rtime">${fa(readMins(r))} دقیقه</span><span class="rdot" ${unread?'':'style="visibility:hidden"'}></span></div>
+  </a>`;
+ }).join('');
+}
+function toBubbles(html){
+ const tmp=document.createElement('div'); tmp.innerHTML=html; const out=[];
+ tmp.childNodes.forEach(n=>{
+  if(n.nodeType!==1) return;
+  const tag=n.tagName;
+  if(tag==='UL'||tag==='OL'){
+    n.querySelectorAll(':scope > li').forEach(li=>{
+      if(n.classList.contains('flow')){
+        const b=li.querySelector('b'), s=li.querySelector('span:not(.n)'), num=li.querySelector('.n');
+        out.push({cls:'', html:'<span class="mono" style="background:transparent;padding:0">'+(num?num.textContent:'')+'.</span> <b>'+(b?b.textContent:'')+'</b>'+(s?'<br><span style="color:var(--label2)">'+s.textContent+'</span>':'')});
+      } else out.push({cls:'', html:li.innerHTML});
+    });
+  } else if(n.classList&&n.classList.contains('check')){ out.push({cls:'', html:n.innerHTML}); }
+  else if(n.classList&&n.classList.contains('warn')){ out.push({cls:'warn', html:n.innerHTML}); }
+  else if(n.classList&&n.classList.contains('copyrow')){ return; }
+  else { out.push({cls:n.className==='end'?'end':'', html:n.innerHTML}); }
+ });
+ return out;
+}
+function showDetail(id,targetBubble){
+ current=id;
+ const r=RULES.find(x=>x.id===id); if(!r)return;
+ document.getElementById('listView').style.display='none';
+ document.getElementById('detail').style.display='block';
+ document.getElementById('dAv').textContent=r.no;
+ document.getElementById('detail').style.setProperty('--acc',ACCENTS[r.id-1]);
+ document.getElementById('dAv').style.background=ACCENTS[r.id-1];
+ document.getElementById('dAv').style.color='#fff';
+ document.getElementById('dPill').textContent=r.title;
+ document.getElementById('sysLine').innerHTML='امروز<br>ماده '+r.no+' از '+fa(13);
+ const units=[{cls:'', html:'<b>'+r.sub+'</b>'}].concat(toBubbles(r.body));
+ const base=location.href.split('#')[0];
+ const linkSvg='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>';
+ const bubbles=units.map((u,i)=>{
+   const cls='bubble'+(r.black?' darkb':'')+(u.cls==='warn'?' warnb':'')+(u.cls==='end'?' endb':'');
+   const av=i===0?'<div class="mav">ق</div>':'';
+   const link=base+'#/m'+r.id+'/b'+i;
+   return (i===0?'<div class="who">قوانین بین‌المللی</div>':'')+
+    `<div class="msg${i===0?' first':''}">${av}<div class="bwrap"><div class="${cls}" tabindex="0" data-b="${i}">${u.html}</div><button class="linkbtn" type="button" tabindex="-1" aria-label="کپی لینک این پیام" data-link="${link}">${linkSvg}</button></div></div>`;
+ }).join('');
+ document.getElementById('dContent').innerHTML=bubbles+
+  `<div class="seen" id="seen">${isDone(r.id)?'خوانده شد':'&nbsp;'}</div>`+
+  `<div class="sys" style="margin-top:22px">روی یک پیام بزنید تا کپی شود؛ دکمه پیوند کنار هر پیام لینک مستقیم آن را می‌سازد</div>`;
+ window.scrollTo(0,0);
+ if(targetBubble!==null&&targetBubble!==undefined){
+  const t=document.querySelector('#dContent .bubble[data-b="'+targetBubble+'"]');
+  if(t){const rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   setTimeout(()=>{t.scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});
+    if(!rm){t.classList.add('flash');setTimeout(()=>t.classList.remove('flash'),1500)}},80)}
+ }
+}
+/* context menu — long-press a bubble, like iOS Messages */
+let sheetText='', sheetLink='', pressTimer=null, pressEl=null;
+function linkFor(id,b){return location.href.split('#')[0]+'#/m'+id+'/b'+b}
+function openSheet(text,el){
+ sheetText=text;
+ sheetLink=(el&&el.dataset&&el.dataset.b!==undefined&&current!==null)?linkFor(current,+el.dataset.b):'';
+ if(el){el.classList.add('press');pressEl=el}
+ document.getElementById('sheet').classList.add('open');
+ document.getElementById('sheetBg').classList.add('open');
+ document.getElementById('copyBtn').focus();
+}
+function closeSheet(){
+ document.getElementById('sheet').classList.remove('open');
+ document.getElementById('sheetBg').classList.remove('open');
+ if(pressEl){pressEl.classList.remove('press');pressEl.focus();pressEl=null}
+}
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&document.getElementById('sheet').classList.contains('open')){closeSheet()}
+});
+function copyText(t,cb){
+ const finish=()=>{if(cb)cb()};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(finish,()=>{legacyCopy(t);finish()})}
+ else{legacyCopy(t);finish()}
+}
+function legacyCopy(t){
+ const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+ document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();
+}
+function doCopy(){copyText(sheetText,closeSheet)}
+document.getElementById('copyBtn').addEventListener('click',doCopy);
+document.getElementById('copyLinkBtn').addEventListener('click',()=>{if(sheetLink)copyText(sheetLink,closeSheet)});
+document.getElementById('cancelBtn').addEventListener('click',closeSheet);
+document.getElementById('sheetBg').addEventListener('click',closeSheet);
+document.getElementById('dContent').addEventListener('pointerdown',e=>{
+ const b=e.target.closest('.bubble'); if(!b)return;
+ clearTimeout(pressTimer);
+ pressTimer=setTimeout(()=>openSheet(b.textContent.trim(),b),480);
+});
+document.getElementById('dContent').addEventListener('pointerup',()=>clearTimeout(pressTimer));
+document.getElementById('dContent').addEventListener('click',e=>{
+ const lb=e.target.closest('.linkbtn');
+ if(lb){
+  e.stopPropagation();
+  const check='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  const old=lb.innerHTML;
+  copyText(lb.dataset.link,()=>{});
+  lb.classList.add('done');lb.innerHTML=check;
+  setTimeout(()=>{lb.classList.remove('done');lb.innerHTML=old},1200);
+  return;
+ }
+ const b=e.target.closest('.bubble'); if(!b)return;
+ if(document.getElementById('sheet').classList.contains('open'))return;
+ openSheet(b.textContent.trim(),b);
+});
+document.getElementById('dContent').addEventListener('pointerleave',()=>clearTimeout(pressTimer));
+document.getElementById('dContent').addEventListener('contextmenu',e=>{
+ const b=e.target.closest('.bubble'); if(!b)return;
+ e.preventDefault();clearTimeout(pressTimer);openSheet(b.textContent.trim(),b);
+});
+document.getElementById('dContent').addEventListener('keydown',e=>{
+ const b=e.target.closest('.bubble'); if(!b)return;
+ if(e.key==='Enter'||e.key===' '){e.preventDefault();openSheet(b.textContent.trim(),b)}
+});
+/* swipe back from the right edge (RTL), like iOS */
+let swipeX=null;
+document.getElementById('detail').addEventListener('pointerdown',e=>{swipeX=(e.clientX>window.innerWidth-28)?e.clientX:null});
+document.getElementById('detail').addEventListener('pointerup',e=>{
+ if(swipeX!==null&&swipeX-e.clientX>60){goList()}
+ swipeX=null;
+});
+function goList(){
+ current=null;closeSheet();
+ document.getElementById('detail').style.display='none';
+ document.getElementById('listView').style.display='block';
+ if(location.hash){try{history.pushState(null,'',location.pathname+location.search)}catch(e){location.hash=''}};
+ renderList();
+ window.scrollTo(0,0);
+}
+document.getElementById('backBtn').addEventListener('click',goList);
+document.getElementById('q').addEventListener('input',renderList);
+window.addEventListener('scroll',()=>{
+ if(current===null)return;
+ const h=document.documentElement;
+ const max=h.scrollHeight-h.clientHeight;
+ if(max<=0)return;
+ const p=(h.scrollTop/max)*100;
+ if(p>=90&&!isDone(current)){
+  read[current]=100;save();
+  const seen=document.getElementById('seen'); if(seen)seen.textContent='خوانده شد';
+ }
+},{passive:true});
+function route(){
+ const m=location.hash.match(/#\/m(\d+)(?:\/b(\d+))?/);
+ if(m&&RULES.some(r=>r.id===+m[1])){showDetail(+m[1],m[2]!==undefined?+m[2]:null)}
+ else{current=null;document.getElementById('detail').style.display='none';document.getElementById('listView').style.display='block';renderList()}
+}
+window.addEventListener('hashchange',route);
+if('serviceWorker' in navigator){navigator.serviceWorker.register('../sw.js').catch(()=>{})}
+renderList();
+route();
+</script>
+</body>
+</html>
