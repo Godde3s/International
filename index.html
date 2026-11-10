@@ -1,620 +1,187 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>International Laws</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css " rel="stylesheet" type="text/css" />
-    <style>
-        :root {
-            --bg-color: #050505;
-            --card-bg: rgba(25, 25, 30, 0.5);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --primary-glow: #00e5ff;
-            --secondary-glow: #7c4dff;
-            --text-white: #ffffff;
-            --text-gray: #b0b0b0;
-            --danger: #ff2a6d;
-            --success: #05ffa1;
-            --header-height: 60px;
-            --nav-height: 75px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html, body {
-            height: 100%;
-            width: 100%;
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            overflow-x: hidden;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-
-        .space-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out alternate;
-        }
-        .orb-1 { top: -10%; right: -10%; width: 300px; height: 300px; background: var(--secondary-glow); }
-        .orb-2 { bottom: 10%; left: -20%; width: 400px; height: 400px; background: var(--primary-glow); animation-delay: -2s; }
-        .orb-3 { top: 40%; right: 10%; width: 150px; height: 150px; background: var(--danger); opacity: 0.2; animation-duration: 15s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -30px) scale(1.1); }
-        }
-
-        .app-wrapper {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            padding-top: calc(var(--header-height) + 20px);
-            padding-bottom: calc(var(--nav-height) + 40px); 
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
-
-        header h1 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #fff, var(--primary-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            opacity: 0.5;
-        }
-
-        h2 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: var(--primary-glow);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        h3 {
-            font-size: 1rem;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            color: var(--secondary-glow);
-        }
-
-        p { line-height: 1.8; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 10px; }
-        ul { padding-right: 25px; margin-bottom: 15px; color: var(--text-gray); font-size: 0.9rem; }
-        li { margin-bottom: 8px; }
-
-        .tab-content { display: none; animation: fadeUp 0.4s ease; }
-        .tab-content.active { display: block; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .creators-box {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .creator {
-            flex: 1;
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        .creator:hover { border-color: var(--primary-glow); background: rgba(255,255,255,0.08); }
-        .c-name { display: block; font-weight: bold; color: var(--text-white); margin-bottom: 5px; }
-        .c-eng { font-size: 0.75rem; color: var(--text-gray); font-family: sans-serif; letter-spacing: 1px; }
-
-        details {
-            background: rgba(0,0,0,0.3);
-            margin-bottom: 12px;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            overflow: hidden;
-        }
-        summary {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            color: var(--text-white);
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        summary::after { content: '+'; color: var(--primary-glow); font-size: 1.2rem; }
-        details[open] summary { background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--card-border); }
-        details[open] summary::after { content: '-'; }
-        .details-body { padding: 15px; font-size: 0.9rem; color: var(--text-gray); }
-
-        .countdown-box {
-            text-align: center;
-            background: rgba(0,0,0,0.6);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px dashed var(--primary-glow);
-            margin: 15px 0;
-        }
-        .numbers {
-            font-family: monospace;
-            font-size: 1.4rem;
-            letter-spacing: 4px;
-            color: var(--primary-glow);
-            text-shadow: 0 0 10px var(--primary-glow);
-            margin: 10px 0;
-            direction: ltr;
-        }
-
-        nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: var(--nav-height);
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 100;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .nav-btn {
-            background: none;
-            border: none;
-            color: var(--text-gray);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            width: 25%;
-            transition: 0.3s;
-        }
-        .nav-btn svg { width: 24px; height: 24px; fill: currentColor; transition: 0.3s; }
-        .nav-btn span { font-size: 0.75rem; font-weight: 500; }
-        .nav-btn.active { color: var(--primary-glow); }
-        .nav-btn.active svg { filter: drop-shadow(0 0 8px var(--primary-glow)); transform: translateY(-3px); }
-        .nav-btn.active::after {
-            content: '';
-            width: 4px; height: 4px;
-            background: var(--primary-glow);
-            border-radius: 50%;
-            margin-top: 4px;
-            box-shadow: 0 0 8px var(--primary-glow);
-        }
-
-        .hl { color: var(--primary-glow); font-weight: bold; }
-        .err { color: var(--danger); font-weight: bold; }
-        .ok { color: var(--success); font-weight: bold; }
-
-        .admin-item {
-            display: flex;
-            align-items: center;
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            border: 1px solid var(--card-border);
-        }
-        .avatar {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--secondary-glow), var(--primary-glow));
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 1.2rem;
-            margin-left: 15px;
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
-        }
-        .info { flex: 1; }
-        .a-name { color: #fff; font-weight: bold; font-size: 1rem; margin-bottom: 4px; }
-        .a-id { color: var(--text-gray); font-size: 0.8rem; font-family: sans-serif; direction: ltr; text-align: right; margin-bottom: 6px; }
-        .badge {
-            font-size: 0.7rem; padding: 3px 10px; border-radius: 10px; font-weight: bold; color: #fff;
-        }
-        .bg-creator { background: linear-gradient(90deg, #FF9966, #FF5E62); }
-        .bg-admin { background: linear-gradient(90deg, #4facfe, #00f2fe); color: #000; }
-
-        .link-box {
-            display: block; text-align: center; background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow));
-            color: #fff; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold;
-            margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
-        }
-        
-        .note-box {
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            padding: 12px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-
-        .special-list li {
-            margin-bottom: 12px;
-            padding-right: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قوانین بین‌المللی</title>
+<meta name="description" content="سند قوانین بین‌المللی (اینترنشنال) — کل‌های سایبری، هکینگ، فیلترینگ و ریپورت؛ متن کامل بدون تغییر از کانال رسمی.">
+<meta property="og:title" content="قوانین بین‌المللی">
+<meta property="og:description" content="سند قوانین بین‌المللی (اینترنشنال) — متن کامل، فهرست و جستجو.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='55' fill='%230f0d0a'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23e0705a' stroke-width='4'/%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='%23c9a227' stroke-width='1.5'/%3E%3Ctext x='60' y='79' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='52' fill='%23e0705a'%3E%D9%82%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+/* تم ذخیره‌شده را پیش از رنگ‌آمیزی اعمال می‌کند تا صفحه پرش نکند */
+document.documentElement.classList.add('js');try{if(localStorage.getItem('intl-theme')==='light')document.documentElement.dataset.theme='light';}catch(e){}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">پرش به محتوا</a>
 
-    <div class="space-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-
-    <header>
-        <h1>قوانین بین‌المللی</h1>
-    </header>
-
-    <div class="app-wrapper">
-        
-        <div id="home" class="tab-content active">
-            <div class="card" style="text-align: center;">
-                <p style="font-size: 1.1rem; margin-bottom: 15px; color: #fff;">با ذکر نام یاد اَهـورامـزدا شروع میکنیم</p>
-                <h3 style="margin-top:5px; color: var(--text-gray);">قوانین بین‌المللی/ اینترنشنال</h3>
-                <a href="https://t.me/Ghavanin_internationaL " class="link-box">t.me/Ghavanin_internationaL</a>
-            </div>
-
-            <div class="creators-box">
-                <a href="tel:09928123943" class="creator">
-                    <span class="c-name">رضا بازدار</span>
-                    <span class="c-eng">Reza Joker</span>
-                </a>
-                <a href="tel:09308934704" class="creator">
-                    <span class="c-name">علی معصومی</span>
-                    <span class="c-eng">ALi HaCk</span>
-                </a>
-            </div>
-
-            <div class="card">
-                <p><strong>نویسنده‌های ابر قوانین سایبری و ریپورت و فیلترینگ و هکینگ، تلگرام یعنی قوانین اینترنشنال یا بین‌المللی</strong></p>
-                <div class="note-box" style="margin-top:10px; border-color: rgba(255, 42, 109, 0.3); background: rgba(255, 42, 109, 0.1);">
-                    <p class="err">!! نکته !!</p>
-                    <p style="font-size: 0.85rem;">هویت رضا جوکر و علی هک بایگانیه و سیكشون نمیخوره هیچ جوره پس قوانین هیچوقت فیک نمیشه مگر اینکه خود نویسنده ها بخان فیکش کنن.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>انواع کل مورد تایید ما</h2>
-                <ul>
-                    <li><span class="hl">1 – Cyberi</span></li>
-                    <li><span class="hl">2 – HaCkinG</span></li>
-                    <li><span class="hl">3 – FiLterinG</span></li>
-                    <li><span class="hl">4 – ReportinG</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="rules" class="tab-content">
-            <div class="card">
-                <h2>C Y B E R I</h2>
-                <p>توضیح کل سایبری که دارای دو بخش مهم و مختلف هستش:</p>
-                
-                <details open>
-                    <summary>کدنویسی (Coding)</summary>
-                    <div class="details-body">
-                        <p>این کل هر دو کلر یا چلنجر باید رو فیلم سورس رو کدنویسی کنن و هرگونه کپی پیست باعث سیک میشه.</p>
-                        <p><span class="ok">نکته:</span> اگه سورس رو خود کیبورد ادیت کنه مشکلی نداره مثلا ما اشتباه بنویسیم <span style="direction: ltr; font-family: monospace;">Sistem</span> و اون ادیت کنه <span style="direction: ltr; font-family: monospace;">System</span> و ایرادی نداره.</p>
-                        <p><strong>موارد مورد نیاز:</strong> داور معتبر در کنار چکر + فیلم ریکورد از کدنویسی کردن سورس + کیبورد اصلی گوشی (کیبورد های ادیت شده باخته) + توی محیطای IDE هم استفاده از قابلیت هاشون مشکلی نیست.</p>
-                    </div>
-                </details>
-
-                <details open>
-                    <summary>آزاد (Free)</summary>
-                    <div class="details-body">
-                        <p>این کل بصورت ازاد هستش و از اسمش که معلومه کپی پیست ازاده ولی فقط کپی ازاده و چیز دیگه ای با کل کدنویسی فرقی نداره.</p>
-                        <p>هر کلر فیلم باید داشته باشه و اگر نداشته باشه سیکش خورده.</p>
-                        <p><span class="ok">نکته:</span> در کل کدنویسی و ازاد میتونید در ریکوردتون سورس رو هایلایت کنید جوری که سورس نوشته اش معلوم نباشه ولی معلوم باشه که کپی نزدید.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div class="card">
-                <details open>
-                    <summary>H A C K I N G</summary>
-                    <div class="details-body">
-                        <p>هرگونه کل که ربطی به حوزه های تست نفوذ از شاخه های مختلف هرگونه کل که عملیات هک یا نفوذ یا امنیت و فیشینگ رو بهش میگیم کل هکینگ.</p>
-                        <p class="err" style="margin-top:10px;">نکته: در صورت استفاده اشتباه از اسم کل ها هر اتفاقی بیوفته به گردن همون کلریه که این اشتباه رو انجام داده.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div class="card">
-                <details open>
-                    <summary>F I L T E R I N G</summary>
-                    <div class="details-body">
-                        <p>کل فیلترینگ هیچ ربطی به کل ریپورت نداره و در صورت استفاده اشتباه از این کار سیک کلر مرتکب میخوره و ولی فقط با یه هویتش.</p>
-                        <p>کل فیلترینگ انواع کل زدن اکانت گروه و چنل قفلی در Iranian Platforms یا اپلیکیشن های داخلی است گفته میشود (مثل روبیکا، شاد، ایتا، سروش).</p>
-                        
-                        <!-- تیتر و متن کل خودکار برگردانده شده -->
-                        <h3 style="margin-top:15px; color: var(--secondary-glow);">وضعیت کل خودکار</h3>
-                        <p>کل خودکار در هر کلی معتبره ولی کل خودکار نیاز به این داره کلر دو در تونل باشه و آزاد نمیتونی کل خودکار استارت کنی.</p>
-                        <p>اگه کلر دوم خودکار استارت کنه و تو تونلش نباشی فاقده و بعدش اکه تو همین کارو کنی معتبره تا عدالت ضایع نشه.</p>
-                        
-                        <p class="err" style="margin-top:15px;">کل فیلترینگ با تایم آزاد فاقده. ۲ هفته بیشترین تایم کله.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div class="card">
-                <details open>
-                    <summary>R E P O R T I N G</summary>
-                    <div class="details-body">
-                        <p>کل ریپورت هیچ ربطی به پلتفرم های داخلی نداره.</p>
-                        <p><span class="hl">فقط شامل:</span> اپلیکیشن های تلگرام و اینستاگرام و اپ های خارجی.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-
-        <div id="joolan" class="tab-content">
-            <div class="card">
-                <h2>بخش دوم: نحوه جولان دادن</h2>
-                <p><strong>نحوه نوع دادن:</strong> شکل کل + توضیح پروژه + تایم + قوانین + سر چی باشه.</p>
-                <p>اینکه از چه ابزار و زبانی هم استفاده کنیم میتونه تو نوع بیاد الزامی نیست.</p>
-                <p>اگه نوع یا جولانی قوانین نداشته باشه (نوشته شده باشه اون نوع طبق قوانین ما انجام میشود چه کلر بخاد چه نخاد).</p>
-                <p class="err">نکته مهم: در صورتی عدم رضایت کلر اول سیکش میخوره و اینکه کل سر چی باشه فقط ۳ خط میتونه باشه اگه بیشتر بشه نوع یا جولان فاقده اهمیته.</p>
-            </div>
-
-            <div class="card">
-                <h2>شکل صحیح جولان</h2>
-                <ul>
-                    <li>- Team One</li>
-                    <li>- Team Two</li>
-                    <li>- TotaL</li>
-                    <li>- Tips</li>
-                    <li>- Link ToneL</li>
-                    <li>- Link @Ghavanin_internationaL</li>
-                </ul>
-                <p class="ok">جابه جا باشن اشکالی نداره.</p>
-                <p>بعد از پایان کل و تموم کردن کد نویسی یا هرچیز دیگه ای که کلیده بودید اعلام کنین <strong>"نکل و کل تمومه"</strong>.</p>
-                <p class="err">جولان بعد از خاست کلر یک فاقده.</p>
-            </div>
-
-            <div class="card">
-                <h2>قوانین عمومی جولان</h2>
-                <ul>
-                    <li>در قوانین بین‌المللی هیچ گونه درخواست معتبری از سوی کلر به داور یا داور به کلر یا کلر به کلر نداریم.</li>
-                    <li>در قوانین فرق نمیکنه اسم تونلتون چی باشه هرچی باشه قبوله ولی کینگ خبری مهمه باید یچیز در مورد کینگ یا خبری یا توتال باشه.</li>
-                    <li>هرچیز ادیت خورده ای در توتال نیوز فاقد محسوب میشه.</li>
-                    <li>حداقل ممبرای تونل و کینگ مهم نیست فقط هیچمدوم نباید در هنگام کل سکرت باشن و با اعتراض کلرا باز باید بشه اگه اعتراض نکنن سکرت باز نشه ایرادی نداره.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>قوانین کل کات و هویت</h2>
-                <p>در صورت نوشته شدن در نکات کسانی که کل کات یا بایگانین هویت میگیرن و این زوری و اجباریه و حتمیه.</p>
-                <p>اگه مدرکی برای کل کاتی نداشتید ، باید بکلید و وقتی هویت بگیرید و بکلید اگه سیکتون بخوره با تموم هویت هاتون خورده.</p>
-            </div>
-            
-            <div class="card">
-                <h2>نکات تکمیلی و جزئیات حیاتی</h2>
-                <ul class="special-list">
-                    <li>انتخاب نوع به انتخاب <span class="hl">کلر جولان خورده</span> هستش نه کلر ۱ و این قوانین سروشی اینجا <span class="err">فاقده اهمیته</span>.</li>
-                    <li>انتخاب داور با <span class="hl">کلر یک</span> هستش و ربطی به کلر دوم نداره و کلر دو میتونه یه چکر بیاره ولی در صورت توهین به اعضای تونل کاملا عزله.</li>
-                    <li>بعد از اینکه تایم داور برای انجام هرکار به کلر دوم تموم شد، کلر اول می‌تونه درخواست عزل و یا ریم کلر دوم رو بگیره.</li>
-                    <li>هر جولان تا <span class="hl">۱ هفته</span> معتبره اما بعد اینکه حق بنر گرفتین دیگه جولان تمومه و اگه جولان بخورید حسابه.</li>
-                    <li>بعد از ریپلای رو نوع یا جولان <span class="err">هیچ بهونه ای نمی‌مونه</span> (مثلا هویت فیکه یا فلان چیز فاقده یا نوع فاقده) و همه چیز بابد قبل کل مشخص بشه.</li>
-                    <li><span class="err">نوع رو نوع سیکه / جولان رو نوع سیکه / نوع رو جولان سیک نیست.</span></li>
-                    <li>اگه کلر تو تایم توافقی مشخص نیاد بالا <span class="err">سیکش میخوره</span> و نمیتونه بکله.</li>
-                    <li>سین مخفی <span class="ok">معتبره</span>.</li>
-                    <li>بلاک کردن بعد از فوروارد جولان <span class="ok">معتبره</span> و هیچوقت باعث باخت نیست.</li>
-                    <li>کلر باید <span class="hl">جوین شه</span> مدارک خودشو به داور بده در غیر این صورت اگه جوین نشه و پیوی کلر یک چیزی بگه معتبر نیست.</li>
-                    <li>استفاده از سورس های چت جی پی تی درصورت تایید شدنش باعث <span class="err">سیکه</span>.</li>
-                    <li>اکه کسی اشتباه بکله و اطلاعات اخرش اشتباه باشه <span class="err">سیکش کاملا میخوره</span>.</li>
-                    <li>بعد اتمام کل میگید نکل و بعد فیلم کات میکنید و شاتو میدید البته این بخش خیلی مهم نی ترتیبش ولی <span class="hl">اول باید بگی نکل</span>.</li>
-                    <li>هرگونه نوع با بدون قوانین از این تایم <span class="err">سیکه</span> در تموم کل ها از جمله سایبری هکینگ ریپورت و فیلترینگ.</li>
-                    <li>درصورت شلوغ بودن تونل با تایید کلر اول داور یه تونل میزنه و کل اونجا انجام میشه.</li>
-                    <li>تغییر داور فقط زمانی معتبره که داور به کلر دو توهین کنه یا کلر اول عزلش کنه.</li>
-                    <li>توهین کلر دو به داور باعث <span class="err">باخت</span> / توهین داور به کلر دو باعث <span class="hl">عزل شدن</span> میشود / توهین کلر ها بهم هیچ گونه اعتباری نداره.</li>
-                    <li>اگه شما در تلگرام نوع فیلترینگ روبیکا بدید نیاز نیست تو روبیکا قفل کنید، هویت کلتون رو فقط در <span class="hl">تلگرام مهمه</span>.</li>
-                    <li>برای انکه اثبات کنید کلر چیزی نیستید <span class="hl">۱۵ بنر</span> باید از اون کل بیارید، بهونه اینکه کلر این پلتفرم نیستم فاقده اهمیته.</li>
-                    <li>لرز تو جولان <span class="ok">باخت نیست</span>.</li>
-                    <li>الزامی نیست جولان تو تونل پین باشه و وقتی کلر دوم اومد با درخواست داور میتونه بفوره تو تونل کلر یک !!</li>
-                    <li>کلر یک نیازی برای اجازه شات و فور گرفتن نداره ولی کلر دو نیاز داره و در صورت <span class="hl">۳ اخطار</span> <span class="err">سیکش میخوره</span>.</li>
-                    <li>سیک باخت هیچ فرقی نداره.</li>
-                    <li>کل کات بای کل فرقی نداره.</li>
-                    <li>کسی که یه هویتش بایگانیه در صورت تایید شدن این قضیه سیک اون هویت هاش <span class="ok">نمیخوره</span> به هیچ وجه.</li>
-                    <li>این قوانین در پلتفرم سروش اعتبار نداره ولی تو روبیکا داره ولی نکات این قوانین <span class="hl">اصل کلریه</span> و حتی اگه با این قوانین جولان نداده باشید بازم این نکات استفاده میشه.</li>
-                    <li>اگه سین بزنی و طبق تایم مشخص نیای و کلر اول هرجای حق بنر تو بگیره دیگه <span class="err">حق کلیدن نداری</span> مخصوصا اگه دیر کنی.</li>
-                    <li>اگه کلرش نیستی باید ثابت کنی و بعدش باید بالاخاتو بیاری یا ببینی کلر اول ایا نوع میده طبق حوزه خودت.</li>
-                    <li>حق لف باید از داور بگیری اگه نداد یا طرفگیری یا توهین کرد از طرف قوانین حق لف دادن از تونل رو دارید.</li>
-                    <li>اگه بالاخاهاتو بیاری بجات بکلن اگه سیکش خورد هم <span class="err">اون با تموم هویت هاش میخوره</span> هم تو ولی اگه باخت کلر اول خورد فقط هویت کلش میخوره.</li>
-                    <li>در کل فیلترینگ ریپورت قفلی ها / اکانت ها / روبینو ها ربطی نداره که مالکش کی باشه مگه اینکه تو نوع گفته باشه از خودمون باشه.</li>
-                    <li>در کل فیلترینگ در خواست ها باید تو‌نوع باشه مثلا !!</li>
-                    <li>کل فیلترینگ زدن اکانت روبیکای هم که تو پیوی هم یه فحش بدیم <span class="err">قوانین بین‌المللی سر سیک از کل مجازی</span> (فحشی که داده میشه باید برا جفت کلرا یچیز باشه نه اینکه فرق کنه).</li>
-                    <li><span class="err">کل ابزاری و ساخت فاقده !!</span></li>
-                    <li><span class="err">کل عملی فاقده !!</span></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>سیک شدن و فاقد شدن</h2>
-                <ul>
-                    <li class="err">جولان رو جولان باخته، اگه شما جولان بدید بعد حق بنر یا قبل حق بنر طرف جولان رو جولان کنه سیکش خورده.</li>
-                    <li class="err">کلر دوم اگه بیاد تونل جولان رو جولان کنه حتی اگه جولان واسه خودش نباشه سیک خودش و اونکه جولان داده میخوره.</li>
-                    <li><em>مثال :</em> من جولان دادم مهراب خدایان و سین زده اومده تونل و جولان یکی از بالاخاهاش که امیر خدایانه رو فور برنه به اعضای تونل هم سیک مهراب میخوره هم سیک امیر خدایان به علت جولان رو جولان</li>
-                    <li class="err">جولان رو جولان سیکه (هرکی زود تر فور کنه تایم ثبت مهم نیست).</li>
-                    <li>جولان با هویت فیک در صورتی که با ق ما باشه سیک نیست و میتونی هویتتو به انتخاب داور عوض کنی.</li>
-                    <li>سین عدم جوین و سین مخفی در هر صورت سیک حساب میشن.</li>
-                    <li>کل خودکار در هر کلی معتبره ولی کل خودکار نیاز به این داره کلر دو در تونل باشه و آزاد نمیتونی کل خودکار استارت کنی.</li>
-                    <li>اگه کلر دوم خودکار استارت کنه و تو تونلش نباشی فاقده و بعدش اکه تو همین کارو کنی معتبره تا عدالت ضایع نشه.</li>
-                    <li>هر کسی که سابقه ۲ تا جولان با قوانین بین‌المللی رو داره میتونه داوری کنه و چکری هم همینطور در غیر این صورت حق چکری و داوری رو نداره.</li>
-                    <li>جولان سایب به کلر فیل و همینطور برعکس با گرفتن مدرک فاقد میشه و کلر میتونه طبق حوزه اون نوع بده.</li>
-                    <li>کلکاتی که مدرکی برای کلر نبودن خودش نداره حرفش فاقده و شاهد نیاز نیست؛ کل کات داخل چنل های چکری نامعتبر و تایید نشده از قوانین ما فاقده.</li>
-                    <li class="err">ادیت جولان بعد فور زدن جولان فاقده (تناقض بین متن پیوی و تونل).</li>
-                    <li class="err">استفاده از پنجره شناور کاملا باخته و سیکه و همینطور از قبل پیست کردن سورس در برنامه و فقط ران کردنش هم فاقده.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>اسکرول کل (استارت)</h2>
-                <p>کل در پیوی و تونل به یه صورت استارت میشه. از قبل استارت شدن جفت کلر میرن رو فیلم تا زمان:</p>
-                <div class="countdown-box">
-                    <div class="numbers">1 2 3 4 5 6 7 8 9 0</div>
-                    <div style="font-weight:bold; color:var(--text-white)">بکلید</div>
-                </div>
-                <p>تا کلمه بکلید باید تو تونل رو ریکورد باشید و بعد اون میرید تا کل رو انجام بدید.</p>
-            </div>
-
-            <div class="card">
-                <h2>بخش دوم قوانین ← قفل کردن قفلی برا کل</h2>
-                
-                <p>اگه تو تل جولان بدید فقط اینجا قفلی رو قفل کنید بقیه اپ ها مهم نی. پسوند اصلی قوانین <strong>KhaLeq</strong> هستش.</p>
-                <p>خالق با gh خریداری شده و دیگه قابل استفاده نیست پس KhaLeq تنها پسوند اعتبار دار در تلگرام هست خواهد بود.</p>
-
-                <div class="note-box">
-                    <p style="font-weight: bold; color: var(--primary-glow); margin-bottom: 5px;">نکته مهم:</p>
-                    <p>ما میتونیم تو جولان بزنیم هویت رو تو تونل انتخاب میکنم در اون صورت اگه هویت کلمون تو تونل بگیم و قفلی نداشته باشیم میتونیم عوض کنیم در غیر این صورت اگه هویت کل تو جولان نوشته باشیم از قبل و قفلی نداشته باشیم سیکمون میخوره.</p>
-                </div>
-
-                <h3 style="margin-top:15px">قفل کردن هویت</h3>
-                <p>فقط ۱ قفلی اصلی قفل باشه کافیه. برای مثال برای هویت علی هک فقط فقط:</p>
-                <p class="ok">@KhaLeq_ALi_HaCk معتبره</p>
-                <p class="err">@KhaLeq_ALy_HaCk نامعتبر<br>@KhaLeq_ALi_Hak نامعتبر</p>
-            </div>
-
-            <div class="card">
-                <h2>بخش ۳: چلنج (CHALLENGE)</h2>
-                <p><strong>توضیح چلنج:</strong> این بخش ، بخش جذاب قوانین برای رو کم کنی!</p>
-                <p>نه نیاز به هویت معتبر داری نه نیاز به تونل و کینگ داری نه نیاز به نوع خاصی داری و سر چیز خاصی نیست مخصوصا سیک.</p>
-                <p>کسایی که کل کاتن یا کلری نمیکنن میتونن بتل برن یا همون حالا چلنج به چه صورته؟</p>
-                <p><em>مثال:</em> علی هکم کریتور هک یا چلنج ساده میدم به رضا جوکر سر رو کم کنی.</p>
-                <p>(در این قسمت مینویسیم که پروژه چلنج چیه برای مثال) بتل کدنویسی یه ابزار برای DDOS زدن و اف کردن وبسایت های داخلی!! و بعد لینک تونل.</p>
-                <p>در چلنج نیازی به هویت و هیچیز جز یه داور ندارید و سیک کسی نمیخوره پس چلنجر دوم نمیتونه بگه که من کلر نیستم و نمیام و فرار کنه به به منظور واقعیت.</p>
-            </div>
-            
-            <div class="card" style="text-align: center; border: none; background: transparent; box-shadow: none;">
-                <p style="font-size: 1.5rem; letter-spacing: 3px; font-weight: bold; color: var(--text-white);">تَـمـآم . . .</p>
-            </div>
-        </div>
-
-        <div id="team" class="tab-content">
-            <div class="card">
-                <h2>اعضای تیم</h2>
-                <div id="team-list"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <nav>
-        <button class="nav-btn active" onclick="switchTab('home', this)">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            <span>خانه</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('rules', this)">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-            <span>قوانین</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('joolan', this)">
-            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>جولان</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('team', this)">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <span>تیم</span>
-        </button>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html">
+      <svg class="seal-mini" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#e0705a" stroke-width="6"/><circle cx="60" cy="60" r="44" fill="none" stroke="#c9a227" stroke-width="3"/><text x="60" y="79" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="52" fill="#e0705a">ق</text></svg>
+      <span>قوانین بین‌المللی<span class="b-sub"> — سند مرجع</span></span>
+    </a>
+    <nav class="head-nav" aria-label="ناوبری اصلی">
+      <a class="tb-home" href="index.html" aria-current="page">خانه</a>
+      <a href="rules.html">متن قوانین</a>
+      <a class="tb-telegram" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">کانال تلگرام</a>
     </nav>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="تغییر تم تیره و روشن">
+      <svg class="sun-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19"/></svg>
+      <svg class="moon-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.2A8.6 8.6 0 1 1 9.8 3.6a7 7 0 1 0 10.6 10.6z"/></svg>
+    </button>
+  </div>
+</header>
 
-    <script>
-        function switchTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
+<main id="main">
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+  <!-- سرلوحه -->
+  <section class="hero wrap">
+    <div class="hero-seal">
+      <svg class="seal seal-tilt" viewBox="0 0 120 120" role="img" aria-label="مهر سند قوانین بین‌المللی">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2.5" class="s-ink"/>
+        <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="1.4 7.6" opacity=".8" class="s-ink"/>
+        <circle cx="60" cy="60" r="36" fill="none" stroke="currentColor" stroke-width="1.2" class="s-gold"/>
+        <text x="60" y="78" text-anchor="middle" font-family="Estedad,Vazirmatn,sans-serif" font-weight="900" font-size="50" fill="currentColor" class="s-ink">ق</text>
+        <rect x="56.5" y="4" width="7" height="7" transform="rotate(45 60 7.5)" fill="currentColor" class="s-gold"/>
+        <rect x="56.5" y="109" width="7" height="7" transform="rotate(45 60 112.5)" fill="currentColor" class="s-gold"/>
+      </svg>
+    </div>
+    <p class="eyebrow">با ذکر نام یاد اَهـورامـزدا شروع میکنیم</p>
+    <h1>قوانین بین‌المللی</h1>
+    <p class="hero-sub">قوانین بین‌المللی/ <b>اینترنشنال</b></p>
+    <a class="link-box" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 2.9 11.4c-1 .4-1 1.3-.2 1.6l4.7 1.5 1.8 5.5c.2.6.4.8.9.8.5 0 .7-.2 1-.5l2.4-2.3 4.8 3.6c.9.5 1.5.2 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.6-1.5zM8.4 14.1l9.6-6.1c.5-.3.9-.1.6.3l-8.2 7.4-.3 3.6-1.7-5.2z"/></svg>
+      t.me/Ghavanin_internationaL
+    </a>
+    <div class="hero-cta">
+      <a class="btn" href="rules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>
+        متن کامل قوانین
+      </a>
+      <a class="btn btn-ghost" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 2.9 11.4c-1 .4-1 1.3-.2 1.6l4.7 1.5 1.8 5.5c.2.6.4.8.9.8.5 0 .7-.2 1-.5l2.4-2.3 4.8 3.6c.9.5 1.5.2 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.6-1.5zM8.4 14.1l9.6-6.1c.5-.3.9-.1.6.3l-8.2 7.4-.3 3.6-1.7-5.2z"/></svg>
+        کانال تلگرام
+      </a>
+    </div>
+  </section>
 
-        const members = [
-            { n: "رضا بازدار", i: "@muanster", r: "سازنده", l: "ر", c: "bg-creator" },
-            { n: "علی معصومی", i: "@hoshzakhmi", r: "سازنده", l: "ع", c: "bg-creator" },
-            { n: "اسامی چنل", i: "", r: "ادمین", l: "ن", c: "bg-admin" }
-        ];
+  <!-- انواع کل -->
+  <section class="sec wrap reveal" aria-labelledby="h-anva">
+    <div class="sec-head">
+      <span class="sec-no">فهرست</span>
+      <h2 id="h-anva">انواع کل مورد تایید ما</h2>
+    </div>
+    <div class="rule-divider" aria-hidden="true"><i></i></div>
+    <div class="ledger">
+      <a href="rules.html#sec-01"><span class="name">1 – Cyberi</span><span class="go">مادهٔ ۰۱ سند</span></a>
+      <a href="rules.html#sec-02"><span class="name">2 – HaCkinG</span><span class="go">مادهٔ ۰۲ سند</span></a>
+      <a href="rules.html#sec-03"><span class="name">3 – FiLterinG</span><span class="go">مادهٔ ۰۳ سند</span></a>
+      <a href="rules.html#sec-04"><span class="name">4 – ReportinG</span><span class="go">مادهٔ ۰۴ سند</span></a>
+    </div>
+  </section>
 
-        const list = document.getElementById('team-list');
-        members.forEach(m => {
-            const div = document.createElement('div');
-            div.className = 'admin-item';
-            div.innerHTML = `
-                <div class="avatar">${m.l}</div>
-                <div class="info">
-                    <div class="a-name">${m.n}</div>
-                    <div class="a-id">${m.i}</div>
-                    <span class="badge ${m.c}">${m.r}</span>
-                </div>
-            `;
-            list.appendChild(div);
-        });
-    </script>
+  <!-- اعلان سند و بانیان -->
+  <section class="sec wrap reveal" aria-label="اعلان سند">
+    <div class="doc-notice">
+      <div class="panel panel-strong">
+        <h3>وضعیت سند</h3>
+        <p><strong>نویسنده‌های ابر قوانین سایبری و ریپورت و فیلترینگ و هکینگ، تلگرام یعنی قوانین اینترنشنال یا بین‌المللی</strong></p>
+        <div class="note-box err-tone" style="margin-top:14px">
+          <p class="nb-label">!! نکته !!</p>
+          <p style="font-size:.9rem">هویت رضا جوکر و علی هک بایگانیه و سیكشون نمیخوره هیچ جوره پس قوانین هیچوقت فیک نمیشه مگر اینکه خود نویسنده ها بخان فیکش کنن.</p>
+        </div>
+      </div>
+      <div class="dossier" style="grid-template-columns:1fr">
+        <div class="person">
+          <div class="avatar" aria-hidden="true">ر</div>
+          <div>
+            <div class="p-name">رضا بازدار</div>
+            <div class="p-lat">Reza Joker</div>
+            <a class="badge is-role" href="tel:09928123943">تماس: 09928123943</a>
+          </div>
+        </div>
+        <div class="person">
+          <div class="avatar" aria-hidden="true">ع</div>
+          <div>
+            <div class="p-name">علی معصومی</div>
+            <div class="p-lat">ALi HaCk</div>
+            <a class="badge is-role" href="tel:09308934704">تماس: 09308934704</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- اعضای تیم -->
+  <section class="sec wrap reveal" aria-labelledby="h-team">
+    <div class="sec-head">
+      <span class="sec-no">تیم</span>
+      <h2 id="h-team">اعضای تیم</h2>
+    </div>
+    <div class="rule-divider" aria-hidden="true"><i></i></div>
+    <div class="team-list">
+      <div class="team-item">
+        <div class="avatar" aria-hidden="true">ر</div>
+        <div>
+          <div class="t-name">رضا بازدار</div>
+          <div class="t-id">@muanster</div>
+        </div>
+        <span class="badge is-role">سازنده</span>
+      </div>
+      <div class="team-item">
+        <div class="avatar" aria-hidden="true">ع</div>
+        <div>
+          <div class="t-name">علی معصومی</div>
+          <div class="t-id">@hoshzakhmi</div>
+        </div>
+        <span class="badge is-role">سازنده</span>
+      </div>
+      <div class="team-item">
+        <div class="avatar" aria-hidden="true">ن</div>
+        <div>
+          <div class="t-name">اسامی چنل</div>
+        </div>
+        <span class="badge">ادمین</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- نوار فراخوان -->
+  <section class="wrap reveal" aria-label="دسترسی به سند">
+    <div class="cta-band">
+      <div>
+        <h2>متن کامل قوانین</h2>
+        <p>سند با فهرست مطالب، جستجوی متنی و لینک مستقیم هر ماده</p>
+      </div>
+      <div class="hero-cta" style="margin-top:0">
+        <a class="btn" href="rules.html">خواندن سند</a>
+        <a class="btn btn-ghost" href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">کانال تلگرام</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colo-row">
+      <svg class="seal-mini" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#e0705a" stroke-width="6"/><circle cx="60" cy="60" r="44" fill="none" stroke="#c9a227" stroke-width="3"/><text x="60" y="79" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="52" fill="#e0705a">ق</text></svg>
+      <strong style="font-family:var(--f-display)">قوانین بین‌المللی</strong>
+      <nav class="colo-links" aria-label="پیوند‌های پانویس">
+        <a href="index.html">خانه</a>
+        <a href="rules.html">متن قوانین</a>
+        <a href="https://t.me/Ghavanin_internationaL" target="_blank" rel="noopener">t.me/Ghavanin_internationaL</a>
+      </nav>
+    </div>
+    <p class="colo-note">نسخهٔ دیجیتال سند قوانین؛ متن بدون تغییر و مرجع رسمی، کانال تلگرام است.</p>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
 </body>
 </html>
