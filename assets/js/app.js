@@ -1,47 +1,70 @@
-/* قوانین بین‌المللی — رفتارهای صفحه
-   همهٔ کد Vanilla JS است؛ هیچ کتابخانه‌ای در کار نیست. */
+/* قوانین بین‌المللی — رفتارهای صفحه (سبک اپلیکیشن‌های iOS)
+   تمام کد Vanilla JS است؛ بدون هیچ کتابخانه‌ای.
+   بهبود تدریجی: بدون جاوااسکریپت هم همهٔ متن‌ها خوانا و در دسترس‌اند. */
 (function () {
   'use strict';
 
   var d = document;
+  var root = d.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function faNum(n) {
+    return String(n).replace(/\d/g, function (ch) {
+      return '۰۱۲۳۴۵۶۷۸۹'[+ch];
+    });
+  }
 
   /* ---------- تم تیره/روشن ---------- */
   var themeBtn = d.getElementById('theme-toggle');
+  var metaTheme = d.getElementById('meta-theme');
+  function paintMeta() {
+    if (!metaTheme) return;
+    metaTheme.setAttribute('content',
+      root.dataset.theme === 'light' ? '#f2f2f7' : '#000000');
+  }
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
-      var root = d.documentElement;
       var next = root.dataset.theme === 'light' ? '' : 'light';
       if (next) { root.dataset.theme = next; } else { delete root.dataset.theme; }
       try { localStorage.setItem('intl-theme', next); } catch (e) {}
       themeBtn.setAttribute('aria-pressed', String(next === 'light'));
+      paintMeta();
     });
   }
+  paintMeta();
 
-  /* ---------- سربرگ چسبان ---------- */
-  var head = d.querySelector('.site-head');
-  if (head) {
-    var onScrollHead = function () {
-      head.classList.toggle('is-stuck', window.scrollY > 8);
+  /* ---------- نوار بالا: خط مویی + عنوان کوچک هنگام اسکرول ---------- */
+  var navbar = d.querySelector('.navbar');
+  var largeTitle = d.querySelector('.large-title');
+  if (navbar) {
+    var onNavScroll = function () {
+      navbar.classList.toggle('is-stuck', window.scrollY > 4);
     };
-    onScrollHead();
-    window.addEventListener('scroll', onScrollHead, { passive: true });
+    onNavScroll();
+    window.addEventListener('scroll', onNavScroll, { passive: true });
+  }
+  if (navbar && largeTitle && 'IntersectionObserver' in window) {
+    var titleIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        // وقتی عنوان بزرگ از زیر نوار رد شد، عنوان کوچک ظاهر می‌شود
+        navbar.classList.toggle('is-titled',
+          !en.isIntersecting && en.boundingClientRect.top < en.rootBounds.top + 60);
+      });
+    }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+    titleIO.observe(largeTitle);
   }
 
-  /* ---------- بازگشت به بالا ---------- */
-  var toTop = d.querySelector('.to-top');
-  if (toTop) {
-    var onScrollTop = function () {
-      toTop.classList.toggle('show', window.scrollY > 620);
-    };
-    onScrollTop();
-    window.addEventListener('scroll', onScrollTop, { passive: true });
-    toTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-    });
-  }
+  /* ---------- بلوک ابزار سند: ارتفاع ثابت، بدون جمع‌شدن (جلوگیری از پرش محتوا) ---------- */
+  var tools = d.getElementById('doc-tools');
+  var searchInput = d.getElementById('doc-search');
 
   /* ---------- نمایان‌شدن بخش‌ها هنگام اسکرول ---------- */
+  var revealEls = Array.prototype.slice.call(d.querySelectorAll('.reveal'));
+  // کارت‌های سند هم آرام ظاهر می‌شوند
+  d.querySelectorAll('.doc-list .art').forEach(function (a) {
+    if (!reduceMotion) a.classList.add('reveal');
+    revealEls.push(a);
+  });
   if (!reduceMotion && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -50,43 +73,29 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.08 });
-    d.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.05, rootMargin: '0px 0px -4% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    d.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('seen'); });
+    revealEls.forEach(function (el) { el.classList.add('seen'); });
   }
 
-  /* ---------- مُهرِ سرلوحه ---------- */
-  var seal = d.querySelector('.hero-seal .seal');
-  if (seal && !reduceMotion) seal.classList.add('stamp-in');
-
-  /* ---------- شمارش استارت: نشان‌گر راه‌رفته روی رقم‌ها ---------- */
-  var cd = d.querySelector('.countdown .cd-digits');
-  if (cd && !reduceMotion) {
-    var cells = cd.querySelectorAll('span');
-    var i = 0;
-    setInterval(function () {
-      cells.forEach(function (c) { c.classList.remove('lit'); });
-      cells[i % cells.length].classList.add('lit');
-      i++;
-    }, 420);
-  }
-
-  /* ---------- فهرست فعال ---------- */
-  var tocLinks = Array.prototype.slice.call(d.querySelectorAll('.toc a[href^="#"]'));
-  var arts = tocLinks.map(function (a) { return d.getElementById(a.getAttribute('href').slice(1)); })
-    .filter(Boolean);
-  if (arts.length && 'IntersectionObserver' in window) {
-    var active = null;
-    var tocIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) active = en.target.id;
-      });
-      tocLinks.forEach(function (a) {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + active);
-      });
-    }, { rootMargin: '-30% 0px -55% 0px' });
-    arts.forEach(function (s) { tocIO.observe(s); });
+  /* ---------- HUD اطلاع‌رسانی (مثل iOS) ---------- */
+  var hud = d.createElement('div');
+  hud.className = 'hud';
+  hud.setAttribute('role', 'status');
+  hud.setAttribute('aria-live', 'polite');
+  hud.innerHTML =
+    '<div class="hud-pill">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.8 9.6 18 19.5 6.8"/></svg>' +
+    '<span class="hud-text"></span></div>';
+  d.body.appendChild(hud);
+  var hudText = hud.querySelector('.hud-text');
+  var hudTimer = null;
+  function showHud(msg) {
+    hudText.textContent = msg;
+    hud.classList.add('show');
+    clearTimeout(hudTimer);
+    hudTimer = setTimeout(function () { hud.classList.remove('show'); }, 1500);
   }
 
   /* ---------- ابزارها: کپی متن، کپی لینک ---------- */
@@ -112,22 +121,15 @@
     d.body.removeChild(ta);
     done();
   }
-  function markDone(btn, labelDone) {
+  function markDone(btn) {
     btn.classList.add('done');
-    var lbl = btn.querySelector('.tb-label');
-    var old = lbl ? lbl.textContent : '';
-    if (lbl) lbl.textContent = labelDone;
-    setTimeout(function () {
-      btn.classList.remove('done');
-      if (lbl) lbl.textContent = old;
-    }, 1600);
+    setTimeout(function () { btn.classList.remove('done'); }, 1600);
   }
   d.querySelectorAll('.art[data-title]').forEach(function (art) {
-    var title = art.getAttribute('data-title');
     var cBtn = art.querySelector('.js-copy');
     if (cBtn) {
       cBtn.addEventListener('click', function () {
-        copyText(plainText(art), function () { markDone(cBtn, 'کپی شد'); });
+        copyText(plainText(art), function () { markDone(cBtn); showHud('متن ماده کپی شد'); });
       });
     }
     var lBtn = art.querySelector('.js-link');
@@ -135,19 +137,20 @@
       lBtn.addEventListener('click', function () {
         var url = location.origin + location.pathname + '#' + art.id;
         if (history.replaceState) history.replaceState(null, '', '#' + art.id);
-        copyText(url, function () { markDone(lBtn, 'لینک کپی شد'); });
+        copyText(url, function () { markDone(lBtn); showHud('لینک ماده کپی شد'); });
       });
     }
   });
 
   /* ---------- جستجو در متن سند ---------- */
-  var searchInput = d.getElementById('doc-search');
   if (searchInput) {
     var allArts = Array.prototype.slice.call(d.querySelectorAll('.art'));
     var meta = d.querySelector('.search-meta');
     var noResult = d.querySelector('.no-result');
+    var field = searchInput.closest('.search-field');
+    var clearBtn = d.querySelector('.search-clear');
 
-    // یکسان‌سازی حروف برای مقایسه: ی/ك عربی، نیم‌فاصله، ا/أ/إ/آ، رقم فارسی/لاتین
+    // یکسان‌سازی حروف برای مقایسه: ی/ي و ك عربی، نیم‌فاصله، ا/أ/إ/آ، ة/ه، رقم فارسی/لاتین
     function norm(s) {
       return String(s)
         .replace(/[\u200c\u200f\u200e]/g, ' ')
@@ -162,7 +165,7 @@
     allArts.forEach(function (art) {
       art._hay = norm((art.getAttribute('data-title') || '') + ' ' + plainText(art));
     });
-    // بازنشانی هایلایت‌ها (برگشت متن از داخل mark)
+
     function resetMarks() {
       allArts.forEach(function (art) {
         art.querySelectorAll('mark[data-dyn]').forEach(function (m) {
@@ -176,8 +179,7 @@
       var walker = d.createTreeWalker(art, NodeFilter.SHOW_TEXT, {
         acceptNode: function (node) {
           if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-          var p = node.parentElement;
-          if (p.closest('.art-tools')) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement.closest('.art-tools')) return NodeFilter.FILTER_REJECT;
           return norm(node.nodeValue).indexOf(q) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
         }
       });
@@ -188,19 +190,14 @@
         var raw = node.nodeValue;
         var idx = hay.indexOf(q);
         if (idx === -1) return;
-        // نگاشت تقریبی موقعیت پس از یکسان‌سازی به متن خام (طول‌ها برابرند؛ یکسان‌سازی طول را تغییر نمی‌دهد به جز نیم‌فاصله)
+        var a = idx, b = idx + q.length;
+        // نیم‌فاصله در یکسان‌سازی به فاصله تبدیل شده؛ پوشش پیرامونی برای اطمینان
         if (raw.length !== hay.length) {
-          // نیم‌فاصله به فاصله تبدیل شده؛ جستجو در متن خام با پوشش پیرامونی
-          var a = Math.max(0, idx - 1), b = Math.min(raw.length, idx + q.length + 1);
-          var range = document.createRange();
-          range.setStart(node, a); range.setEnd(node, b);
-          var m = d.createElement('mark');
-          m.setAttribute('data-dyn', '1');
-          try { range.surroundContents(m); } catch (e) {}
-          return;
+          a = Math.max(0, idx - 1);
+          b = Math.min(raw.length, idx + q.length + 1);
         }
-        var range = document.createRange();
-        range.setStart(node, idx); range.setEnd(node, idx + q.length);
+        var range = d.createRange();
+        range.setStart(node, a); range.setEnd(node, b);
         var m = d.createElement('mark');
         m.setAttribute('data-dyn', '1');
         try { range.surroundContents(m); } catch (e) {}
@@ -215,6 +212,13 @@
     searchInput.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { searchInput.value = ''; runSearch(); }
     });
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        searchInput.value = '';
+        runSearch();
+        searchInput.focus();
+      });
+    }
     // کلید میان‌بر «/»
     d.addEventListener('keydown', function (e) {
       if (e.key === '/' && !/input|textarea/i.test(d.activeElement.tagName)) {
@@ -232,18 +236,84 @@
         art.classList.toggle('is-hidden', !hit);
         if (hit) { shown++; if (q) highlight(art, q); }
       });
-      noResult.classList.toggle('show', q && shown === 0);
-      if (meta) meta.textContent = q ? (shown + ' ماده') : '';
+      noResult.classList.toggle('show', Boolean(q) && shown === 0);
+      field.classList.toggle('has-value', searchInput.value.length > 0);
+      tools.classList.toggle('is-searching', Boolean(q));
+      if (meta) meta.textContent = q ? (faNum(shown) + ' ماده') : '';
     }
     runSearch();
   }
 
-  /* ---------- پرش به نشانی عمیق هنگام بازشدن صفحه ---------- */
+  /* ---------- تراشه‌های فهرست: پیمایش فعال + پرش ---------- */
+  var chips = Array.prototype.slice.call(d.querySelectorAll('.chip[href^="#"]'));
+  if (chips.length) {
+    var chipsEl = d.querySelector('.chips');
+    var chipArts = chips.map(function (c) { return d.getElementById(c.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+
+    // وسط‌چین‌کردن تراشهٔ فعال — فقط داخل خودِ نوار تراشه‌ها، بدون هیچ تکان صفحه
+    var userChipScrollUntil = 0;
+    if (chipsEl) {
+      ['pointerdown', 'wheel', 'touchstart'].forEach(function (ev) {
+        chipsEl.addEventListener(ev, function () {
+          userChipScrollUntil = Date.now() + 1400;
+        }, { passive: true });
+      });
+    }
+    function centerChip(c, smooth) {
+      if (!chipsEl || Date.now() < userChipScrollUntil) return;
+      var cr = chipsEl.getBoundingClientRect();
+      var r = c.getBoundingClientRect();
+      if (r.left >= cr.left && r.right <= cr.right) return;   // کامل دیده می‌شود
+      var target = chipsEl.scrollLeft + (r.left + r.width / 2 - (cr.left + cr.width / 2));
+      chipsEl.scrollTo({
+        left: target,
+        behavior: smooth && !reduceMotion ? 'smooth' : 'auto'
+      });
+    }
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function (e) {
+        e.preventDefault();
+        chips.forEach(function (x) { x.classList.remove('is-active'); });
+        c.classList.add('is-active');
+        userChipScrollUntil = 0;
+        centerChip(c, true);
+        var t = d.getElementById(c.getAttribute('href').slice(1));
+        if (t) t.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+        history.replaceState(null, '', c.getAttribute('href'));
+      });
+    });
+
+    // نشان‌گر تراشهٔ فعال هنگام اسکرول
+    if ('IntersectionObserver' in window) {
+      var active = null;
+      var chipIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) active = en.target.id;
+        });
+        chips.forEach(function (c) {
+          var on = c.getAttribute('href') === '#' + active;
+          c.classList.toggle('is-active', on);
+          if (on) centerChip(c, true);
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      chipArts.forEach(function (s) { chipIO.observe(s); });
+    }
+  }
+
+  /* ---------- پرش به نشانی عمیق هنگام باز شدن صفحه ---------- */
   if (location.hash) {
     var target = d.getElementById(location.hash.slice(1));
     if (target && target.classList.contains('art')) {
       target.classList.add('flash');
-      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }, 60);
+      setTimeout(function () { target.classList.remove('flash'); }, 2200);
     }
   }
 })();
