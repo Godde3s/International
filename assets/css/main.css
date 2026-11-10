@@ -1,8 +1,7 @@
 /* ==========================================================================
-   قوانین بین‌المللی — سیستم طراحی «iOS فارسی»
-   زبان بصری: اپلیکیشن‌های بومی iOS (سیاه + طوسی + نارنجی)
-   هیچ گرادیان، هیچ درخشش، هیچ تزئین اضافه — فقط رنگ‌های سیستمی،
-   کارت‌های گروه‌شده، نوارهای شفاف مات و خطوط مویی.
+   قوانین بین‌المللی — زبان بصری iOS (سیاه + طوسی + نارنجی)
+   نسخهٔ ۳: «کمتر، اما دقیق‌تر» — فضای سفید بیشتر، متن درشت‌تر،
+   کروم کمتر؛ هیچ جعبه‌داخل‌جعبه و هیچ تزئین اضافه.
    ========================================================================== */
 
 /* ---------- توکن‌ها ---------- */
@@ -10,11 +9,10 @@
   --f-body: -apple-system, "SF Pro Text", Vazirmatn, system-ui, "Segoe UI", sans-serif;
   --f-display: -apple-system, "SF Pro Display", Vazirmatn, system-ui, sans-serif;
 
-  --nav-h: 50px;
-  --r-card: 16px;
-  --r-btn: 13px;
-  --r-tile: 9px;
-  --r-search: 11px;
+  --nav-h: 52px;
+  --r-card: 18px;
+  --r-btn: 14px;
+  --r-tile: 10px;
   --ease: cubic-bezier(.32, .72, 0, 1);
 }
 
@@ -23,51 +21,41 @@
   color-scheme: dark;
   --bg: #000000;
   --bg-card: #1c1c1e;
-  --bg-3: #2c2c2e;
-  --bg-4: #3a3a3c;
+  --fill: #2c2c2e;                        /* فیلد جستجو، تراشه */
+  --fill-2: #3a3a3c;
   --label: #ffffff;
-  --label-2: rgba(235, 235, 245, .6);
-  --label-3: rgba(235, 235, 245, .45);
-  --sep: rgba(84, 84, 88, .65);
-  --sep-strong: rgba(84, 84, 88, .9);
-  --fill: rgba(120, 120, 128, .36);
-  --tint: #ff9f0a;                       /* نارنجی iOS در حالت تیره */
+  --label-2: rgba(235, 235, 245, .62);
+  --label-3: rgba(235, 235, 245, .55);
+  --sep: rgba(255, 255, 255, .12);
+  --tint: #ff9f0a;                        /* نارنجی سیستم در حالت تیره */
   --tint-text: #ff9f0a;
   --tint-solid: #ff9500;
   --on-tint: #000000;
   --tint-bg: rgba(255, 159, 10, .14);
-  --tint-bg-strong: rgba(255, 159, 10, .26);
-  --mark-bg: rgba(255, 159, 10, .30);
-  --nav-bg: rgba(18, 18, 20, .74);
-  --tools-bg: rgba(10, 10, 10, .78);
-  --tab-bg: rgba(18, 18, 20, .82);
-  --hud-bg: rgba(44, 44, 46, .92);
+  --tint-bg-strong: rgba(255, 159, 10, .30);
+  --mark-bg: rgba(255, 159, 10, .32);
+  --nav-bg: rgba(12, 12, 13, .78);
+  --bar-bg: rgba(12, 12, 13, .86);
 }
-
-/* تم روشن (خاکستری گروهی iOS) */
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #f2f2f7;
   --bg-card: #ffffff;
-  --bg-3: rgba(120, 120, 128, .12);
-  --bg-4: rgba(120, 120, 128, .18);
+  --fill: rgba(120, 120, 128, .13);
+  --fill-2: rgba(120, 120, 128, .22);
   --label: #000000;
-  --label-2: rgba(60, 60, 67, .75);
-  --label-3: rgba(60, 60, 67, .58);
-  --sep: rgba(60, 60, 67, .29);
-  --sep-strong: rgba(60, 60, 67, .36);
-  --fill: rgba(120, 120, 128, .2);
+  --label-2: rgba(60, 60, 67, .74);
+  --label-3: #6c6c70;                     /* سیستمی — روی f2f2f7 و سفید هر دو AA */
+  --sep: rgba(60, 60, 67, .22);
   --tint: #ff9500;
-  --tint-text: #a84e00;                  /* نارنجی تیره برای متن روی سفید (AA) */
+  --tint-text: #9d4a00;                   /* نارنجی تیره برای متن روی زمینهٔ روشن (AA) */
   --tint-solid: #ff9500;
   --on-tint: #000000;
-  --tint-bg: rgba(255, 149, 0, .15);
-  --tint-bg-strong: rgba(255, 149, 0, .26);
-  --mark-bg: rgba(255, 149, 0, .28);
-  --nav-bg: rgba(249, 249, 251, .78);
-  --tools-bg: rgba(242, 242, 247, .86);
-  --tab-bg: rgba(249, 249, 251, .86);
-  --hud-bg: rgba(250, 250, 252, .94);
+  --tint-bg: rgba(255, 149, 0, .14);
+  --tint-bg-strong: rgba(255, 149, 0, .28);
+  --mark-bg: rgba(255, 149, 0, .30);
+  --nav-bg: rgba(249, 249, 251, .80);
+  --bar-bg: rgba(249, 249, 251, .90);
 }
 
 /* ---------- بازنشانی ---------- */
@@ -76,8 +64,8 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--f-body);
-  font-size: 16px;
-  line-height: 1.85;
+  font-size: 17px;
+  line-height: 1.8;
   background: var(--bg);
   color: var(--label);
   -webkit-font-smoothing: antialiased;
@@ -85,18 +73,18 @@ body {
 }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
-a { color: var(--tint-text); text-decoration: none; }
+a { color: var(--tint-text); text-decoration: none; cursor: pointer; }
 img, svg { display: block; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 input { font: inherit; }
 ::selection { background: var(--tint-bg-strong); }
-:focus-visible { outline: 2px solid var(--tint); outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--tint); outline-offset: 2px; border-radius: 6px; }
 
-.wrap { max-width: 660px; margin-inline: auto; padding-inline: 20px; }
+.wrap { max-width: 620px; margin-inline: auto; padding-inline: 20px; }
 
 /* ---------- پرش به محتوا ---------- */
 .skip-link {
-  position: fixed; inset-inline-start: 16px; top: -60px; z-index: 200;
+  position: fixed; inset-inline-start: 16px; top: -64px; z-index: 200;
   background: var(--tint-solid); color: var(--on-tint);
   padding: 10px 18px; border-radius: 12px; font-weight: 600; font-size: 15px;
   transition: top .2s var(--ease);
@@ -104,7 +92,7 @@ input { font: inherit; }
 .skip-link:focus { top: 12px; }
 
 /* ==========================================================================
-   نوار بالا (مثل iOS) — شفاف مات + خط مویی + عنوان کوچک هنگام اسکرول
+   نوار بالا — شیشهٔ مات (یکی از دو سطح شیشهٔ صفحه)
    ========================================================================== */
 .navbar {
   position: fixed; inset-inline: 0; top: 0; z-index: 100;
@@ -117,12 +105,11 @@ input { font: inherit; }
 }
 .navbar.is-stuck { border-bottom-color: var(--sep); }
 .nav-row {
-  max-width: 660px; margin-inline: auto; padding-inline: 12px;
-  height: 100%; display: flex; align-items: center; gap: 8px;
+  max-width: 620px; margin-inline: auto; padding-inline: 14px;
+  height: 100%; display: flex; align-items: center; gap: 6px;
 }
 .nav-title {
-  font-size: 17px; font-weight: 650; letter-spacing: 0;
-  color: var(--label);
+  font-size: 17px; font-weight: 650; color: var(--label);
   opacity: 0; transform: translateY(5px);
   transition: opacity .25s var(--ease), transform .25s var(--ease);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -132,36 +119,25 @@ input { font: inherit; }
 .nav-title.is-link { color: var(--label); }
 .nav-spacer { flex: 1; }
 
-/* دکمه بازگشت iOS (در صفحهٔ قوانین) */
+/* دکمهٔ بازگشت iOS */
 .back-btn {
-  display: inline-flex; align-items: center; gap: 2px;
+  display: inline-flex; align-items: center; gap: 3px;
   color: var(--tint-text); font-size: 17px; font-weight: 500;
-  padding: 6px 8px 6px 12px; margin-inline-start: -8px;
+  padding: 6px 8px 6px 12px; margin-inline-start: -10px;
   border-radius: 10px; min-height: 44px;
   transition: opacity .15s;
 }
 .back-btn:active { opacity: .45; }
-.back-btn svg { width: 20px; height: 20px; }
+.back-btn svg { width: 21px; height: 21px; }
 
-/* پیوندهای ساده نوار بالا (دسکتاپ) */
-.nav-links { display: flex; align-items: center; gap: 4px; }
-.nav-links a {
-  color: var(--tint-text); font-size: 15px; font-weight: 500;
-  padding: 8px 12px; border-radius: 10px; min-height: 36px;
-  display: inline-flex; align-items: center;
-  transition: opacity .15s;
-}
-.nav-links a:active { opacity: .45; }
-.nav-links a[aria-current="page"] { font-weight: 700; }
-
-/* دکمه آیکنی عمومی (مثل دکمه‌های iOS در نوار) */
+/* دکمهٔ آیکنی نوار بالا (تم و تلگرام) */
 .icon-btn {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 44px; height: 44px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--tint-text); flex: none;
   transition: background-color .2s var(--ease), transform .15s var(--ease);
 }
-.icon-btn:active { background: var(--fill); transform: scale(.94); }
+.icon-btn:active { background: var(--fill); transform: scale(.92); }
 .icon-btn svg { width: 22px; height: 22px; }
 .icon-btn .sun-i { display: none; }
 .icon-btn .moon-i { display: block; }
@@ -169,50 +145,43 @@ input { font: inherit; }
 :root[data-theme="light"] .icon-btn .moon-i { display: none; }
 
 /* ==========================================================================
-   سرلوحهٔ صفحه — عنوان بزرگ iOS
+   سرلوحه — عنوان بزرگ iOS، فقط تایپوگرافی
    ========================================================================== */
-.page-head { padding-top: calc(var(--nav-h) + 26px); }
+.page-head { padding-top: calc(var(--nav-h) + 34px); }
 .caption {
-  font-size: 13px; font-weight: 600; color: var(--label-3);
-  margin-bottom: 10px;
+  font-size: 13.5px; font-weight: 500; color: var(--label-3);
+  margin-bottom: 12px;
 }
 .large-title {
   font-family: var(--f-display);
-  font-size: clamp(30px, 7vw, 34px);
-  font-weight: 800; line-height: 1.3;
-  letter-spacing: 0;
+  font-size: clamp(30px, 7.4vw, 34px);
+  font-weight: 800; line-height: 1.32;
 }
 .lede {
-  margin-top: 8px; font-size: 15px; color: var(--label-2);
-  max-width: 46ch;
+  margin-top: 10px; font-size: 15.5px; line-height: 1.9;
+  color: var(--label-2); max-width: 44ch;
 }
-.btn-row {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  margin-top: 20px;
-}
+.btn-row { margin-top: 22px; }
 
 /* دکمه‌ها */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 48px; padding: 12px 22px;
+  min-height: 50px; padding: 12px 24px;
   border-radius: var(--r-btn);
-  font-size: 16px; font-weight: 650;
+  font-size: 16.5px; font-weight: 650;
   transition: transform .15s var(--ease), filter .15s;
 }
-.btn:active { transform: scale(.97); filter: brightness(.92); }
+.btn:active { transform: scale(.97); filter: brightness(.9); }
 .btn svg { width: 19px; height: 19px; flex: none; }
 .btn-filled { background: var(--tint-solid); color: var(--on-tint); }
-.btn-tinted { background: var(--tint-bg); color: var(--tint-text); }
-.btn-plain { color: var(--tint-text); padding-inline: 10px; }
 
 /* ==========================================================================
-   کارت گروه‌شدهٔ iOS (فهرست گروهی)
+   کارت گروه‌شدهٔ iOS
    ========================================================================== */
-.group { margin-top: 30px; }
+.group { margin-top: 34px; }
 .group-title {
-  font-size: 13px; font-weight: 600; color: var(--label-3);
-  text-transform: uppercase;
-  padding-inline: 16px; margin-bottom: 8px;
+  font-size: 13.5px; font-weight: 600; color: var(--label-3);
+  padding-inline: 18px; margin-bottom: 9px;
 }
 .card {
   background: var(--bg-card);
@@ -222,266 +191,219 @@ input { font: inherit; }
 
 /* ردیف فهرست iOS */
 .row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 16px;
-  min-height: 54px;
+  display: flex; align-items: center; gap: 13px;
+  padding: 13px 16px;
+  min-height: 56px;
   position: relative;
   transition: background-color .15s;
 }
 .row:active { background: var(--fill); }
 a.row { color: inherit; }
-/* خط مویی بین ردیف‌ها — از لبهٔ متن شروع می‌شود (مثل iOS) */
-.row + .row::before,
-.row-sep::before {
+/* خط مویی بین ردیف‌ها — از لبهٔ متن شروع می‌شود */
+.row + .row::before {
   content: ""; position: absolute; top: 0;
-  inset-inline-start: 68px; inset-inline-end: 0;
+  inset-inline-start: 69px; inset-inline-end: 0;
   height: 1px; background: var(--sep);
   pointer-events: none;
 }
 .row-icon {
-  width: 36px; height: 36px; border-radius: var(--r-tile);
+  width: 37px; height: 37px; border-radius: var(--r-tile);
   background: var(--tint-bg); color: var(--tint-text);
   display: inline-flex; align-items: center; justify-content: center;
   flex: none;
 }
 .row-icon svg { width: 20px; height: 20px; }
 .row-main { flex: 1; min-width: 0; }
-.row-title { font-size: 16px; font-weight: 560; line-height: 1.5; }
-.row-title .t-lat { font-weight: 620; }
-.row-sub { font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 1px; }
+.row-title { font-size: 17px; font-weight: 600; line-height: 1.5; }
+.row-sub { font-size: 13.5px; color: var(--label-2); line-height: 1.6; margin-top: 2px; }
 .row-value { font-size: 14px; color: var(--label-2); white-space: nowrap; }
 .row-chevron { width: 16px; height: 16px; color: var(--label-3); flex: none; }
 
-/* آواتار مخاطب (مثل Contacts) */
+/* آواتار مخاطب */
 .avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--bg-3); color: var(--label-2);
+  width: 39px; height: 39px; border-radius: 50%;
+  background: var(--fill); color: var(--label-2);
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 16px; font-weight: 700; flex: none;
 }
 
-/* نشان نقش */
-.badge {
-  font-size: 12px; font-weight: 650;
-  background: var(--bg-3); color: var(--label-2);
-  padding: 4px 11px; border-radius: 999px; flex: none;
-}
-.badge.is-role { background: var(--tint-bg); color: var(--tint-text); }
-
-/* ---------- متن درون کارت‌ها ---------- */
+/* متن درون کارت‌ها */
 .card-pad { padding: 15px 16px; }
-.card-note { font-size: 15px; color: var(--label-2); line-height: 1.9; }
-.card-note strong { color: var(--label); font-weight: 680; }
-.callout {
-  margin-top: 12px;
-  background: var(--tint-bg);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-.callout-title {
-  font-size: 13px; font-weight: 750; color: var(--tint-text);
-  letter-spacing: .2px; margin-bottom: 4px;
-}
-.callout p { font-size: 14px; color: var(--label); line-height: 1.85; }
-.callout.is-warn { background: var(--tint-bg); }
-
-/* پانویس صفحه */
-.colophon { padding: 34px 0 30px; }
-.colophon p {
-  font-size: 13px; color: var(--label-3);
-  text-align: center; line-height: 1.9;
-}
-.colophon .colo-links {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px;
-  margin-bottom: 10px;
-}
-.colophon .colo-links a { font-size: 13px; color: var(--tint-text); font-weight: 500; }
-
-/* ==========================================================================
-   نوار تب پایین (فقط موبایل) — مثل TabBar
-   ========================================================================== */
-.tabbar {
-  position: fixed; inset-inline: 0; bottom: 0; z-index: 100;
-  background: var(--tab-bg);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-top: 1px solid var(--sep);
-  padding-bottom: env(safe-area-inset-bottom, 0);
-}
-.tabbar-row { display: flex; }
-.tab-item {
-  flex: 1; min-height: 52px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 3px; padding: 6px 0 8px;
-  color: var(--label-2);
-  transition: color .2s, transform .15s var(--ease);
-}
-.tab-item:active { transform: scale(.94); }
-.tab-item svg { width: 24px; height: 24px; }
-.tab-item .tab-label { font-size: 10px; font-weight: 600; line-height: 1; }
-.tab-item[aria-current="page"] { color: var(--tint-text); }
-
-/* جا برای نوار تب در موبایل */
-body { padding-bottom: 0; }
+.card-note { font-size: 15.5px; line-height: 1.95; color: var(--label-2); }
+.card-note strong { color: var(--label); font-weight: 650; }
+.card-note + .card-note { border-top: 1px solid var(--sep); margin-top: 13px; padding-top: 13px; }
+.note-tag { color: var(--tint-text); font-weight: 700; }
 
 /* ==========================================================================
    صفحهٔ قوانین
    ========================================================================== */
 
-/* بلوک ابزار چسبان: جستجو + فهرست تراشه‌ای */
+/* بلوک ابزار چسبان — زمینهٔ یکدست (بدون شیشه؛ شیشه فقط نوار بالا و تب است) */
 .doc-tools {
   position: sticky; top: var(--nav-h); z-index: 60;
-  background: var(--tools-bg);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: var(--bg);
   border-bottom: 1px solid var(--sep);
-  margin-top: 22px;
+  margin-top: 24px;
 }
-.doc-tools .wrap { padding-block: 10px; }
-.search-row {
-  margin-bottom: 2px;
-}
+.doc-tools .wrap { padding-block: 12px; }
+
 .search-field {
   position: relative; display: flex; align-items: center;
-  background: var(--bg-3);
-  border-radius: var(--r-search);
-  min-height: 40px; padding-inline: 10px;
+  background: var(--fill);
+  border-radius: 12px;
+  min-height: 46px; padding-inline: 11px;
   transition: box-shadow .2s;
 }
 .search-field:focus-within { box-shadow: 0 0 0 2px var(--tint); }
 .search-field > svg {
   width: 17px; height: 17px; color: var(--label-3); flex: none;
-  margin-inline-end: 7px;
+  margin-inline-end: 8px;
 }
 .search-field input {
   flex: 1; min-width: 0;
   background: none; border: 0; outline: none;
-  color: var(--label); font-size: 16px;
-  padding-block: 9px;
+  color: var(--label); font-size: 16.5px;
+  padding-block: 10px;
 }
 .search-field input::placeholder { color: var(--label-3); }
 .search-field input::-webkit-search-cancel-button { display: none; }
-.kbd-hint {
-  flex: none; font-size: 12px; font-weight: 600;
-  color: var(--label-2); background: var(--bg-4);
-  border-radius: 6px; padding: 2px 8px;
-  font-family: var(--f-body);
-}
-.search-clear {
-  flex: none; width: 30px; height: 30px; border-radius: 50%;
-  display: none; align-items: center; justify-content: center;
-  color: var(--label-2);
-}
-.search-clear:active { color: var(--label); }
-.search-clear svg { width: 18px; height: 18px; }
-.search-field.has-value .search-clear { display: inline-flex; }
-.search-field.has-value .kbd-hint { display: none; }
 .search-meta {
-  flex: none; font-size: 12.5px; color: var(--label-3);
+  flex: none; font-size: 13px; color: var(--label-3);
   white-space: nowrap; margin-inline-start: 8px;
   pointer-events: none;
 }
+.search-clear {
+  flex: none; width: 34px; height: 34px; border-radius: 50%;
+  position: relative;
+  display: none; align-items: center; justify-content: center;
+  color: var(--label-2);
+}
+/* سطح لمسی ۴۴px */
+.search-clear::after { content: ""; position: absolute; inset: -6px; }
+.search-clear:active { color: var(--label); }
+.search-clear svg { width: 18px; height: 18px; }
+.search-field.has-value .search-clear { display: inline-flex; }
 
-/* تراشه‌های فهرست (مثل افق اسکرول iOS) */
+/* تراشه‌های فهرست — اسکرول افقی مانند نوار اپ‌های iOS */
 .chips {
   display: flex; gap: 8px;
   overflow-x: auto; scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  padding-block: 10px;
+  padding-block: 12px;
   margin-inline: -20px; padding-inline: 20px;
   scroll-padding-inline: 20px;
 }
 .chips::-webkit-scrollbar { display: none; }
 .chip {
   flex: none; display: inline-flex; align-items: center; gap: 7px;
-  min-height: 34px; padding: 5px 14px;
+  min-height: 36px; padding: 5px 15px;
+  position: relative;
   border-radius: 999px;
-  background: var(--bg-3); color: var(--label);
-  font-size: 13.5px; font-weight: 600;
+  background: var(--fill); color: var(--label);
+  font-size: 14px; font-weight: 600;
   white-space: nowrap;
   transition: background-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease);
 }
+/* سطح لمسی عمودی ۴۴px */
+.chip::after { content: ""; position: absolute; inset-inline: 0; top: -4px; bottom: -4px; }
 .chip:active { transform: scale(.95); }
 .chip .chip-no {
-  font-size: 11.5px; font-weight: 750; color: var(--tint-text);
+  font-size: 12px; font-weight: 750; color: var(--tint-text);
   font-variant-numeric: tabular-nums;
 }
 .chip.is-active { background: var(--tint-solid); color: var(--on-tint); }
 .chip.is-active .chip-no { color: inherit; }
 
-/* هنگام جستجو تراشه‌ها کم‌رنگ می‌شوند (ارتفاع نوار ثابت می‌ماند تا محتوا نپرد) */
+/* هنگام جستجو تراشه‌ها کم‌رنگ می‌شوند (ارتفاع نوار ثابت می‌ماند) */
 .doc-tools.is-searching .chips { opacity: .35; pointer-events: none; }
-.doc-tools.is-searching .chip.is-active { background: var(--bg-3); color: var(--label); }
+.doc-tools.is-searching .chip.is-active { background: var(--fill); color: var(--label); }
 .doc-tools.is-searching .chip.is-active .chip-no { color: var(--tint-text); }
 
-/* ---------- ماده‌های سند (کارت‌ها) ---------- */
-.doc-list { display: grid; gap: 14px; padding-block: 22px 30px; }
+/* ---------- ماده‌های سند ---------- */
+.doc-list { display: grid; gap: 16px; padding-block: 24px 34px; }
 
 .art {
   background: var(--bg-card);
   border-radius: var(--r-card);
   overflow: hidden;
-  scroll-margin-top: calc(var(--nav-h) + 138px);
+  scroll-margin-top: calc(var(--nav-h) + 150px);
 }
 .art.is-hidden { display: none; }
 
 .art-head {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px 12px;
 }
 .art-head .no {
-  width: 40px; height: 40px; border-radius: var(--r-tile);
-  background: var(--tint-bg); color: var(--tint-text);
-  font-size: 15px; font-weight: 800;
-  display: inline-flex; align-items: center; justify-content: center;
-  flex: none; font-variant-numeric: tabular-nums;
+  flex: none; font-size: 14.5px; font-weight: 800;
+  color: var(--tint-text); font-variant-numeric: tabular-nums;
+  letter-spacing: .3px;
 }
 .art-head h2 {
   flex: 1; min-width: 0;
   font-family: var(--f-display);
-  font-size: 18px; font-weight: 750; line-height: 1.5;
+  font-size: 17px; font-weight: 750; line-height: 1.55;
 }
-/* دکمه‌های ابزار هر ماده — فقط آیکن، مثل نوار iOS */
-.art-tools { display: flex; gap: 8px; flex: none; }
+.art-tools { display: flex; gap: 6px; flex: none; }
 .tool-btn {
   width: 36px; height: 36px; border-radius: 50%;
+  position: relative;
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--bg-3); color: var(--tint-text);
+  background: var(--fill); color: var(--tint-text);
   transition: background-color .2s var(--ease), transform .15s var(--ease), color .2s;
 }
+/* سطح لمسی ۴۴px بدون تغییر شکل بصری */
+.tool-btn::after { content: ""; position: absolute; inset: -4px; }
 .tool-btn:active { transform: scale(.9); background: var(--tint-bg-strong); }
-.tool-btn svg { width: 18px; height: 18px; }
+.tool-btn svg { width: 17px; height: 17px; }
 .tool-btn .tb-label { display: none; }
-.tool-btn.done { color: var(--tint); background: var(--tint-bg); }
+.tool-btn.done { color: var(--on-tint); background: var(--tint-solid); }
 
 /* بدنهٔ ماده */
 .art-body {
-  padding: 2px 16px 16px;
-  font-size: 15.5px; line-height: 2.0;
-  color: var(--label);
   border-top: 1px solid var(--sep);
-  padding-top: 12px;
+  padding: 14px 16px 16px;
+  font-size: 16.5px; line-height: 2.0;
+  color: var(--label);
 }
 .art-body p { margin-bottom: 10px; color: var(--label); }
 .art-body p:last-child { margin-bottom: 0; }
-.art-body strong { font-weight: 720; }
-.art-body .ok {
-  color: var(--tint-text); font-weight: 700;
+.art-body strong { font-weight: 700; }
+.art-body h3 {
+  font-size: 15.5px; font-weight: 700; color: var(--label-2);
+  margin: 14px 0 2px;
 }
+.art-body .ok { color: var(--tint-text); font-weight: 700; }
+.art-body .err { color: var(--tint-text); font-weight: 650; }
+.art-body .hl { font-weight: 700; color: var(--label); }
 .art-body .ltr-token {
   direction: ltr; unicode-bidi: isolate;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: .88em;
-  background: var(--bg-3);
+  background: var(--fill);
   border-radius: 6px; padding: 1px 7px;
 }
-/* گروه‌های بازشونده (مثل DisclosureGroup) */
+
+/* فهرست‌های داخل ماده */
+.art-body ul.blank-form { margin-block: 8px; }
+.art-body ul.blank-form li { padding-block: 2px; }
+.art-body ul.ledgered { margin-block: 8px; display: grid; gap: 9px; }
+.art-body ul.ledgered li {
+  position: relative; padding-inline-start: 16px;
+}
+.art-body ul.ledgered li::before {
+  content: ""; position: absolute; inset-inline-start: 2px; top: .92em;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--tint); opacity: .85;
+}
+
+/* گروه‌های بازشونده */
 .art-body details { margin-block: 10px; }
 .art-body summary {
   list-style: none;
   display: flex; align-items: center; gap: 9px;
   min-height: 44px;
-  font-size: 16px; font-weight: 680;
+  font-size: 16.5px; font-weight: 700;
   cursor: pointer;
   transition: color .15s;
 }
@@ -492,7 +414,7 @@ body { padding-bottom: 0; }
   width: 9px; height: 9px;
   border-inline-start: 2.2px solid var(--label-3);
   border-bottom: 2.2px solid var(--label-3);
-  transform: rotate(135deg);            /* بسته: پیکان به سمت جلو (چپ در RTL) */
+  transform: rotate(135deg);            /* بسته: پیکان به سمت جلو */
   transition: transform .25s var(--ease);
   margin-inline-start: auto;
 }
@@ -501,27 +423,70 @@ body { padding-bottom: 0; }
   border-top: 1px solid var(--sep);
   padding-top: 10px; margin-top: 2px;
 }
+
+/* جعبهٔ نکتهٔ درون ماده — مسطح، بدون حاشیه */
+.note-box {
+  background: var(--tint-bg);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-block: 10px;
+}
+.note-box p { margin: 0; font-size: 15.5px; line-height: 1.9; }
+.nb-label { font-weight: 750; color: var(--tint-text); font-size: 14px; margin-bottom: 3px; }
+
+/* شمارش استارت کل — ردیف رقم‌های iOS */
+.countdown { margin-block: 12px; }
+.cd-digits { display: flex; flex-wrap: wrap; gap: 7px; }
+.cd-digits span {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--fill); border-radius: 11px;
+  font-size: 17px; font-weight: 750; font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+.cd-label {
+  margin-top: 9px; font-size: 14.5px; font-weight: 700;
+  color: var(--tint-text); letter-spacing: .2px;
+}
+
+/* نمونهٔ قفل هویت */
+.specimen { margin-block: 12px; display: grid; gap: 0; background: var(--bg); border-radius: 12px; overflow: hidden; }
+.sp-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 13px;
+  position: relative;
+}
+.sp-row + .sp-row::before {
+  content: ""; position: absolute; top: 0; inset-inline: 13px;
+  height: 1px; background: var(--sep);
+}
+.sp-row .token {
+  direction: ltr; unicode-bidi: isolate;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: .88em; color: var(--label);
+  word-break: break-all;
+}
+.sp-yes { font-size: 13px; font-weight: 700; color: var(--tint-text); flex: none; }
+.sp-no  { font-size: 13px; font-weight: 600; color: var(--label-3); flex: none; }
+
 /* هایلایت جستجو */
 mark {
   background: var(--mark-bg); color: inherit;
   border-radius: 4px; padding: 1px 2px;
   box-decoration-break: clone; -webkit-box-decoration-break: clone;
 }
-
-/* کارت‌های سند فقط با شفافیت ظاهر می‌شوند — بدون جابه‌جایی، تا لینک‌های عمیق دقیق بمانند */
-html.js .doc-list .art.reveal { transform: none; }
 .no-result {
   display: none;
   background: var(--bg-card);
   border-radius: var(--r-card);
   padding: 18px 16px;
-  font-size: 15px; color: var(--label-2); line-height: 1.9;
+  font-size: 15.5px; color: var(--label-2); line-height: 1.9;
   margin-bottom: 20px;
 }
 .no-result.show { display: block; }
 
 /* پایان سند */
-.the-end { text-align: center; padding: 26px 0 10px; }
+.the-end { text-align: center; padding: 26px 0 8px; }
 .the-end p { font-size: 15px; font-weight: 600; color: var(--label-3); letter-spacing: .5px; }
 
 /* فلش هنگام ورود از لینک عمیق */
@@ -532,10 +497,10 @@ html.js .doc-list .art.reveal { transform: none; }
 .art.flash { animation: art-flash 1.6s var(--ease) 1; }
 
 /* ==========================================================================
-   HUD اطلاع کپی — مثل iOS
+   HUD کپی — کپسول یکدست (بدون شیشه؛ شیشه فقط نوار بالا و تب است)
    ========================================================================== */
 .hud {
-  position: fixed; inset-inline: 0; bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+  position: fixed; inset-inline: 0; bottom: calc(82px + env(safe-area-inset-bottom, 0px));
   z-index: 300;
   display: flex; justify-content: center;
   pointer-events: none;
@@ -545,20 +510,45 @@ html.js .doc-list .art.reveal { transform: none; }
 .hud.show { opacity: 1; transform: none; }
 .hud-pill {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--hud-bg);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  backdrop-filter: blur(24px) saturate(180%);
+  background: var(--fill-2);
   color: var(--label);
-  border: 1px solid var(--sep);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .35);
   border-radius: 999px;
   padding: 10px 18px;
   font-size: 14.5px; font-weight: 650;
 }
+:root[data-theme="light"] .hud-pill { box-shadow: 0 10px 34px rgba(0, 0, 0, .16); }
 .hud-pill svg { width: 17px; height: 17px; color: var(--tint-text); }
 
-/* ---------- پانویس صفحه قوانین ---------- */
+/* ---------- پانویس ---------- */
+.colophon { padding: 30px 0 26px; }
+.colophon p { font-size: 13px; color: var(--label-3); text-align: center; line-height: 1.9; }
+.colophon a { font-weight: 600; }
 .page-foot { padding-bottom: 26px; }
+
+/* ==========================================================================
+   نوار تب پایین (موبایل) — شیشهٔ مات (دومین سطح شیشهٔ صفحه)
+   ========================================================================== */
+.tabbar {
+  position: fixed; inset-inline: 0; bottom: 0; z-index: 100;
+  background: var(--bar-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid var(--sep);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.tabbar-row { display: flex; }
+.tab-item {
+  flex: 1; min-height: 52px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; padding: 6px 0 8px;
+  color: var(--label-3);
+  transition: color .2s, transform .15s var(--ease);
+}
+.tab-item:active { transform: scale(.94); }
+.tab-item svg { width: 24px; height: 24px; }
+.tab-item .tab-label { font-size: 10px; font-weight: 600; line-height: 1; }
+.tab-item[aria-current="page"] { color: var(--tint-text); }
 
 /* ==========================================================================
    ۴۰۴
@@ -570,39 +560,45 @@ html.js .doc-list .art.reveal { transform: none; }
 }
 
 /* ==========================================================================
-   نمایان‌شدن هنگام اسکرول (فقط با جاوااسکریپت و بدون reduce-motion)
+   نمایان‌شدن هنگام اسکرول (فقط با JS؛ بدون reduce-motion)
    ========================================================================== */
 html.js .reveal {
   opacity: 0; transform: translateY(10px);
   transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 html.js .reveal.seen { opacity: 1; transform: none; }
+/* کارت‌های سند فقط با شفافیت ظاهر می‌شوند — لینک عمیق دقیق می‌ماند */
+html.js .doc-list .art.reveal { transform: none; }
 
 /* ==========================================================================
-   چیدمان پهن‌تر
+   واکنش‌گرایی
    ========================================================================== */
 @media (min-width: 720px) {
   .tabbar { display: none; }
-  body { padding-bottom: 0 !important; }
 }
 
-/* ---------- موبایل ---------- */
+/* موبایل و عرض کم */
 @media (max-width: 719px) {
-  .nav-links { display: none; }
   body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
-  .hud { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
-  .page-head { padding-top: calc(var(--nav-h) + 18px); }
-  .art-head { flex-wrap: wrap; }
-  .art-head .art-tools { order: 3; width: 100%; justify-content: flex-start; padding-top: 4px; }
+  .hud { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+  .page-head { padding-top: calc(var(--nav-h) + 24px); }
+  /* دکمهٔ اصلی سرلوحه در عرض کم تمام‌عرض می‌شود */
+  .btn-row .btn { width: 100%; }
 }
 
-/* ---------- حالت چاپ ---------- */
+@media (max-width: 360px) {
+  .wrap { padding-inline: 16px; }
+  .chips { margin-inline: -16px; padding-inline: 16px; }
+  .cd-digits span { width: 37px; height: 37px; }
+}
+
+/* حالت چاپ */
 @media print {
   :root, :root[data-theme="light"] {
-    --bg: #fff; --bg-card: #fff; --bg-3: #f2f2f7;
+    --bg: #fff; --bg-card: #fff; --fill: #f2f2f7; --fill-2: #e5e5ea;
     --label: #000; --label-2: #3c3c43; --label-3: #6c6c70;
     --sep: #d1d1d6; --tint-text: #000; --tint-solid: #000; --on-tint: #fff;
-    --nav-bg: #fff; --tools-bg: #fff; --tab-bg: #fff; --hud-bg: #fff;
+    --nav-bg: #fff; --bar-bg: #fff;
   }
   .navbar, .tabbar, .doc-tools, .art-tools, .hud, .btn-row, .skip-link { display: none !important; }
   body { background: #fff; padding: 0; font-size: 12.5pt; }
@@ -612,7 +608,7 @@ html.js .reveal.seen { opacity: 1; transform: none; }
   mark { background: #ffe9c7; }
 }
 
-/* ---------- کاهش حرکت ---------- */
+/* کاهش حرکت */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
